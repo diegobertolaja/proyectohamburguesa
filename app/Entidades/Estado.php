@@ -54,5 +54,15 @@ class Estado extends Model
       }
       return null;
   }
+
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idestado,
+                  A.nombre
+                FROM estados A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
 }
 

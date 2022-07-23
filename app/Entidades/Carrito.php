@@ -53,4 +53,14 @@ class Carrito extends Model
       return null;
   }
 
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idcarrito,
+                  A.nombre
+                FROM carritos A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
+
 }

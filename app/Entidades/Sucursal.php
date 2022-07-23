@@ -47,7 +47,7 @@ class Sucursal extends Model
           telefono='$this->telefono',
           linkmapa='$this->linkmapa,
           telefono='$this->telefono',
-          nombre=$this->nombre
+          nombre='$this->nombre'
           WHERE idsucursal=?";
       $affected = DB::update($sql, [$this->idsucursal]);
   }
@@ -60,7 +60,7 @@ class Sucursal extends Model
               telefono,
               linkmapa,
               nombre
-      FROM sucursales WHERE idcliente = $idsucursal";
+      FROM sucursales WHERE idsucursal = $idsucursal";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
@@ -74,4 +74,13 @@ class Sucursal extends Model
       return null;
   }
 
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idsucursal,
+                  A.nombre
+                FROM sucursales A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
 }

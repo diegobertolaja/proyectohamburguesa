@@ -17,7 +17,7 @@ class Producto extends Model
         'precio', 
         'imagen', 
         'fk_idcategoria',
-         'descripcion' 
+        'descripcion' 
         
       ];
 
@@ -33,7 +33,7 @@ class Producto extends Model
                  precio, 
                  imagen, 
                  fk_idcategoria,
-                 'descripcion'
+                 descripcion
             ) VALUES (?, ?, ?, ?, ?, ?);";
         $result = DB::insert($sql, [
             $this->nombre,
@@ -53,8 +53,8 @@ class Producto extends Model
           cantidad=$this->cantidad,
           precio=$this->mail,
           imagen='$this->imagen',
-          fk_idcategoria=fk_idcategoria,
-          descripcion=descripcion
+          fk_idcategoria=$this->fk_idcategoria,
+          descripcion=$this->descripcion
 
           WHERE idproducto=?";
       $affected = DB::update($sql, [$this->idproducto]);
@@ -74,11 +74,10 @@ class Producto extends Model
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
-          $this->idsucursal = $lstRetorno[0]->idsucursal;
+          $this->idproducto = $lstRetorno[0]->idproducto;
           $this->nombre = $lstRetorno[0]->nombre;
           $this->cantidad = $lstRetorno[0]->cantidad;
           $this->precio = $lstRetorno[0]->precio;
-          $this->dni = $lstRetorno[0]->dni;
           $this->imagen= $lstRetorno[0]->imagen;
           $this->fk_idcategoria = $lstRetorno[0]->fk_idcategoria;
           $this->descripcion = $lstRetorno[0]->descripcion;
@@ -86,5 +85,14 @@ class Producto extends Model
       }
       return null;
   }
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idproducto,
+                  A.nombre
+                FROM productos A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
 }
 

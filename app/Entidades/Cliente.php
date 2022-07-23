@@ -48,16 +48,15 @@ class Cliente extends Model
     public function guardar() {
         $sql = "UPDATE $this->table SET
             nombre='$this->nombre',
-            apellido='$this->apellido'php artisan serv
-            ,
+            apellido='$this->apellido'
             mail=$this->mail,
             dni='$this->dni,
             telefono='$this->telefono'
             WHERE idcliente=?";
-        $affected = DB::update($sql, [$this->idmenu]);
+        $affected = DB::update($sql, [$this->idcliente]);
     }
 
-    public function obtenerPorId($idmenu)
+    public function obtenerPorId($idcliente)
     {
         $sql = "SELECT
                 idcliente,

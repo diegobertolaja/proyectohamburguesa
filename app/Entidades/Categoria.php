@@ -43,7 +43,7 @@ class Categoria extends Model
       $sql = "SELECT
               idcategoria,
               nombre
-      FROM categoria WHERE idcategoria = $idcategoria";
+      FROM categorias WHERE idcategoria = $idcategoria";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
@@ -54,6 +54,15 @@ class Categoria extends Model
       return null;
   }
 
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idcategoria,
+                  A.nombre
+                FROM categorias A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
 }
 
 

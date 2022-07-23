@@ -57,7 +57,7 @@ class Pedido extends Model
       $affected = DB::update($sql, [$this->idpedido]);
   }
 
-  public function obtenerPorId($idmenu)
+  public function obtenerPorId($idpedido)
   {
       $sql = "SELECT
               fecha,
@@ -66,7 +66,7 @@ class Pedido extends Model
               fk_idsucursal,
               fk_idcliente,
               fk_idestado
-      FROM clientes WHERE idpedido = $idpedido";
+      FROM pedidos WHERE idpedido = $idpedido";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
@@ -81,5 +81,15 @@ class Pedido extends Model
       }
       return null;
   }
+
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idpedido,
+                  A.nombre
+                FROM pedidos A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
 
 }

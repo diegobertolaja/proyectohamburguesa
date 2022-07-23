@@ -78,5 +78,15 @@ class Postulacion extends Model
       return null;
   }
 
+  public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  A.idpostulacion,
+                  A.nombre
+                FROM postulaciones A ORDER BY A.nombre";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
+
 }
 
