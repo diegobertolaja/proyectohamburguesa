@@ -48,7 +48,8 @@ class Cliente extends Model
     public function guardar() {
         $sql = "UPDATE $this->table SET
             nombre='$this->nombre',
-            apellido='$this->apellido,
+            apellido='$this->apellido'php artisan serv
+            ,
             mail=$this->mail,
             dni='$this->dni,
             telefono='$this->telefono'
