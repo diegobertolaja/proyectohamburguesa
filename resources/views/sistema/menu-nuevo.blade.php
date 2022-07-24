@@ -17,7 +17,7 @@
     <li class="btn-item"><a title="Guardar" href="#" class="fa fa-floppy-o" aria-hidden="true" onclick="javascript: $('#modalGuardar').modal('toggle');"><span>Guardar</span></a>
     </li>
     @if($globalId > 0)
-    <li class="btn-item"><a title="Guardar" href="#" class="fa fa-trash-o" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');"><span>Eliminar</span></a></li>
+    <li class="btn-item"><a title="Eliminar" href="#" class="fa fa-trash-o" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');"><span>Eliminar</span></a></li>
     @endif
     <li class="btn-item"><a title="Salir" href="#" class="fa fa-arrow-circle-o-left" aria-hidden="true" onclick="javascript: $('#modalSalir').modal('toggle');"><span>Salir</span></a></li>
 </ol>
@@ -52,7 +52,7 @@ if (isset($msg)) {
                 <div class="form-group col-lg-6">
                     <label>Men&uacute; padre:</label>
                     <select id="lstMenuPadre" name="lstMenuPadre" class="form-control">
-                        <option selected value=""></option>
+                        <option selected value="0"></option>
 
                         @for ($i = 0; $i < count($array_menu); $i++)
                             @if (isset($menu) and $array_menu[$i]->idmenu == $menu->id_padre)

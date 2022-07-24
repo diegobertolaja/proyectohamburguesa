@@ -22,7 +22,7 @@ class Categoria extends Model
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-           nombre
+           'nombre'
             ) VALUES (?);";
 
         $result = DB::insert($sql, [

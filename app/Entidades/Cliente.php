@@ -50,7 +50,7 @@ class Cliente extends Model
             nombre='$this->nombre',
             apellido='$this->apellido'
             mail=$this->mail,
-            dni='$this->dni,
+            dni='$this->dni',
             telefono='$this->telefono'
             WHERE idcliente=?";
         $affected = DB::update($sql, [$this->idcliente]);
