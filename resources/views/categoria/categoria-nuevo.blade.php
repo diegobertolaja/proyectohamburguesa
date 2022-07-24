@@ -28,5 +28,27 @@ function fsalir(){
 </script>
 @endsection
 @section('contenido')
-aca va el contenido
+<?php
+if (isset($msg)) {
+    echo '<div id = "msg"></div>';
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+<div class="panel-body">
+        <div id = "msg"></div>
+        <?php
+if (isset($msg)) {
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+            <form id="form1" method="POST">
+            <div class="row">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
+                <div class="form-group col-lg-6">
+                <label>Nombre: *</label>
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+                </div>
+                </div>
+                </form>
 @endsection

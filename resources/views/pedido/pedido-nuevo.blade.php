@@ -28,5 +28,47 @@ function fsalir(){
 </script>
 @endsection
 @section('contenido')
-aca va el contenido
+<?php
+if (isset($msg)) {
+    echo '<div id = "msg"></div>';
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+<div class="panel-body">
+        <div id = "msg"></div>
+        <?php
+if (isset($msg)) {
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+            <form id="form1" method="POST">
+            <div class="row">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
+                <div class="form-group col-lg-6">
+                <label>Fecha: *</label>
+                    <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="" required>
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Cliente: *</label>
+                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Sucursal: *</label>
+                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Descripción: *</label>
+                    <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" value="" required>
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Estado: *</label>
+                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Total: *</label>
+                    <input type="number" id="txtTotal" name="txtTotal" class="form-control" value="" required>
+                </div>
+                </div>
+                </form>
 @endsection
