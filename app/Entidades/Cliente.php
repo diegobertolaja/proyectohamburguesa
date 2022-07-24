@@ -24,6 +24,16 @@ class Cliente extends Model
 
     ];
 
+    public function cargarDesdeRequest($request) {
+        $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
+        $this->nombre = $request->input('txtNombre');
+        $this->apellido = $request->input('txtApellido');
+        $this->mail = $request->input('txtMail');
+        $this->dni = $request->input('txtDni');
+        $this->Telefono = $request->input('txtTelefono');
+        $this->clave = $request->input('txtClave');
+    }
+
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (
