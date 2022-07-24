@@ -18,4 +18,45 @@ class ControladorEstado extends Controller
         return view('estado.estado-nuevo', compact('titulo'));
             }
 
+            public function guardar(Request $request) {
+                try {
+                    //Define la entidad servicio
+                    $titulo = "Modificar estado";
+                    $entidad = new Estado();
+                    $entidad->cargarDesdeRequest($request);
+        
+                    //validaciones
+                    if ($entidad->nombre == "") {
+                        $msg["ESTADO"] = MSG_ERROR;
+                        $msg["MSG"] = "Complete todos los datos";
+                    } else {
+                        if ($_POST["id"] > 0) {
+                            //Es actualizacion
+                            $entidad->guardar();
+        
+                            $msg["ESTADO"] = MSG_SUCCESS;
+                            $msg["MSG"] = OKINSERT;
+                        } else {
+                            //Es nuevo
+                            $entidad->insertar();
+        
+                            $msg["ESTADO"] = MSG_SUCCESS;
+                            $msg["MSG"] = OKINSERT;
+                        }
+                      
+                        $_POST["id"] = $entidad->idestado;
+                        return view('sistema.menu-listar', compact('titulo', 'msg'));
+                    }
+                } catch (Exception $e) {
+                    $msg["ESTADO"] = MSG_ERROR;
+                    $msg["MSG"] = ERRORINSERT;
+                }
+        
+                $id = $entidad->estado;
+                $cliente = new Estado();
+                $cliente->obtenerPorId($id);
+                return view('estado.estado-nuevo', compact('msg', 'cliente', 'titulo')) . '?id=' . $estado->idestado;
+        
+            }                       
+
       }
