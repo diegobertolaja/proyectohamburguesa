@@ -55,7 +55,7 @@ class ControladorCategoria extends Controller
                 $id = $entidad->categoria;
                 $cliente = new Categoria();
                 $cliente->obtenerPorId($id);
-                return view('categoria.categoria-nuevo', compact('msg', 'cliente', 'titulo')) . '?id=' . $categoria->idcategoria;
+                return view('categoria.categoria-nuevo', compact('msg', 'categoria', 'titulo')) . '?id=' . $categoria->idcategoria;
         
             }            
 

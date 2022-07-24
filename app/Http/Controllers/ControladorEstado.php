@@ -55,7 +55,7 @@ class ControladorEstado extends Controller
                 $id = $entidad->estado;
                 $cliente = new Estado();
                 $cliente->obtenerPorId($id);
-                return view('estado.estado-nuevo', compact('msg', 'cliente', 'titulo')) . '?id=' . $estado->idestado;
+                return view('estado.estado-nuevo', compact('msg', 'estado', 'titulo')) . '?id=' . $estado->idestado;
         
             }                       
 

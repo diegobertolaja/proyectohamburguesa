@@ -55,7 +55,7 @@ class ControladorPedido extends Controller
                 $id = $entidad->pedido;
                 $cliente = new Pedido();
                 $cliente->obtenerPorId($id);
-                return view('pedido.pedido-nuevo', compact('msg', 'cliente', 'titulo')) . '?id=' . $pedido->idpedido;
+                return view('pedido.pedido-nuevo', compact('msg', 'pedido', 'titulo')) . '?id=' . $pedido->idpedido;
         
             }            
       }

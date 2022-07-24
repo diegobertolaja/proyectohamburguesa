@@ -25,6 +25,16 @@ class Producto extends Model
 
     ];
 
+    public function cargarDesdeRequest($request) {
+        $this->idproducto = $request->input('id') != "0" ? $request->input('id') : $this->idproducto;
+        $this->nombre = $request->input('txtNombre');
+        $this->cantidad = $request->input('txtCantidad');
+        $this->precio = $request->input('txtPrecio');
+        $this->dni = $request->input('txtDni');
+        $this->fk_idcategoria = $request->input('lstFk_idcategoria');
+        $this->descripcion = $request->input('txtDescripcion');
+    }
+
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (

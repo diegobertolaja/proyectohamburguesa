@@ -23,6 +23,16 @@ class Sucursal extends Model
 
     ];
 
+    public function cargarDesdeRequest($request) {
+        $this->idsucursal = $request->input('id') != "0" ? $request->input('id') : $this->idsucursal;
+        $this->direccion = $request->input('txtDireccion');
+        $this->telefono = $request->input('txtTelefono');
+        $this->linkmapa = $request->input('txtLinkmapa');
+        $this->nombre = $request->input('txtNombre');
+        
+    }
+
+
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (
