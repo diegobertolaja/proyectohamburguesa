@@ -9,7 +9,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/admin/sistema/productos">Productos</a></li>
+    <li class="breadcrumb-item"><a href="/admin/productos">Productos</a></li>
     <li class="breadcrumb-item active">Modificar</li>
 </ol>
 <ol class="toolbar">
@@ -51,43 +51,31 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Cantidad: *</label>
-                    <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
+                    <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Precio: *</label>
-                    <input type="text" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
+                    <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
                 </div>
                 <div class="form-group col-lg-6">
-                <label>Imagen: *</label>
-                    <input type="img" id="imgImagen" name="imgImagen" class="form-control" value="" required>
+                <label>Categoría: *</label>
+                <select name="lstCategoria" id="lstcategoria" class="form-control selectpicker" data-live-search="true" required>
+                    <option value="" disabled selected>Seleccionar</option>
+                    </select>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Descripción: *</label>
-                    <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" value="" required>
+                    <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" equired>></textarea>  
+                </div>
+                <div class="form-group col-lg-6">
+                <label>Imagen: *</label>
+                    <input type="file" id="imagen" name="imagen" class="form-control-file" value="" required>
+                    <img src="" alt="">
                 </div>
                 </div>
-                </form>
-               
-          </div>
-<div class="modal fade" id="mdlEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Eliminar registro?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">¿Deseas eliminar el registro actual?</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-            <button type="button" class="btn btn-primary" onclick="eliminar();">Sí</button>
-          </div>
-        </div>
-      </div>
-    </div>
-<script>
-
+            </form>
+        <script>                         
+    
     $("#form1").validate();
 
     function guardar() {
@@ -104,7 +92,7 @@ if (isset($msg)) {
     function eliminar() {
         $.ajax({
             type: "GET",
-            url: "{{ asset('admin/sistema/menu/eliminar') }}",
+            url: "{{ asset('admin/producto/eliminar') }}",
             data: { id:globalId },
             async: true,
             dataType: "json",
