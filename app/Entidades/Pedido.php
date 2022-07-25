@@ -29,9 +29,9 @@ class Pedido extends Model
         $this->fecha = $request->input('txtFecha');
         $this->descripcion = $request->input('txtDescripcion');
         $this->total = $request->input('txtTotal');
-        $this->fk_idsucursal = $request->input('lstFk_idsucursal');
-        $this->fk_idcliente = $request->input('lstFk_idcliente');
-        $this->fk_idestado = $request->input('lstFk_idestado');
+        $this->fk_idsucursal = $request->input('lstSucursal');
+        $this->fk_idcliente = $request->input('lstCliente');
+        $this->fk_idestado = $request->input('lstEstado');
     }
 
 

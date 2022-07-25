@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Entidades\Pedido; 
-use App\Entidades\Sistema\MenuArea;
+use App\Entidades\Sucursal; 
+use App\Entidades\Cliente;
+use App\Entidades\Estado;
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
 use Illuminate\Http\Request;
@@ -14,8 +16,17 @@ class ControladorPedido extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo menú";
-        return view('pedido.pedido-nuevo', compact('titulo'));
+        $titulo = "Nuevo Pedido";
+        $sucursal = new Sucursal ();
+        $aSucursales = $sucursal->obtenerTodos ();
+
+        $cliente = new Cliente ();
+        $aClientes = $cliente->obtenerTodos ();
+
+        $estado = new Estado ();
+        $aEstados = $estado->obtenerTodos ();
+
+        return view('pedido.pedido-nuevo', compact('titulo', 'aSucursales', 'aClientes', 'aEstados' ));
             }
 
             public function guardar(Request $request) {
@@ -26,7 +37,7 @@ class ControladorPedido extends Controller
                     $entidad->cargarDesdeRequest($request);
         
                     //validaciones
-                    if ($entidad->nombre == "") {
+                    if ($entidad->fk_idcliente == "" || $entidad->fecha == "") {
                         $msg["ESTADO"] = MSG_ERROR;
                         $msg["MSG"] = "Complete todos los datos";
                     } else {

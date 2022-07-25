@@ -51,19 +51,32 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Cliente: *</label>
-                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                    <select name="lstCliente" id="lstCliente" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                        @foreach($aClientes as $item)
+                            <option value="{{ $item->idcliente}}"> {{ $item->nombre}} {{ $item->apellido}}</option>
+                        @endforeach
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Sucursal: *</label>
-                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                    <select name="lstSucursal" id="lstSucursal" class="form-control">
+                            <option disabled selected>Seleccionar</option>
+                        @foreach($aSucursales as $item)
+                            <option value="{{ $item->idsucursal}}">{{ $item->nombre}}</option>
+                        @endforeach
+                    </select> 
                 </div>
-                <div class="form-group col-lg-6">
+                <div class="form-group col-lg-12">
                 <label>Descripción: *</label>
-                    <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" value="" required>
+                    <textarea id="txtDescripcion"name="txtDescripcion" class="form-control" value="" required></textarea>  
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Estado: *</label>
-                    <input type="lst" id="lstEstado" name="lstEstado" class="form-control" value="" required>
+                <select name="lstEstado" id="lstEstado" class="form-control">
+                            <option disabled selected>Seleccionar</option>
+                        @foreach($aEstados as $item)
+                            <option value="{{ $item->idestado}}">{{ $item->nombre}}</option>
+                        @endforeach
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Total: *</label>

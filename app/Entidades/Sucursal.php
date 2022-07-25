@@ -27,7 +27,7 @@ class Sucursal extends Model
         $this->idsucursal = $request->input('id') != "0" ? $request->input('id') : $this->idsucursal;
         $this->direccion = $request->input('txtDireccion');
         $this->telefono = $request->input('txtTelefono');
-        $this->linkmapa = $request->input('txtLinkmapa');
+        $this->linkmapa = $request->input('txtMapa');
         $this->nombre = $request->input('txtNombre');
         
     }
@@ -88,7 +88,11 @@ class Sucursal extends Model
     {
         $sql = "SELECT
                   A.idsucursal,
+                  A.direccion,
+                  A.telefono,
+                  A.linkmapa,
                   A.nombre
+                  
                 FROM sucursales A ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
