@@ -50,7 +50,7 @@ class Cliente extends Model
             $this->mail,
             $this->dni,
             $this->telefono,
-            $this->clave
+            $this->clave,
         ]);
         return $this->idcliente = DB::getPdo()->lastInsertId();
     }

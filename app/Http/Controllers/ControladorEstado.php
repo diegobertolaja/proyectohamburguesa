@@ -15,7 +15,7 @@ class ControladorEstado extends Controller
     public function nuevo()
     {
         $titulo = "Nuevo estado";
-        return view('estado.estado-nuevo', compact('titulo'));
+        return view('estado.estado-nuevo', compact('titulo', es));
             }
 
             public function index()
