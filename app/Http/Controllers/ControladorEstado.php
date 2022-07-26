@@ -27,7 +27,7 @@ class ControladorEstado extends Controller
                         $mensaje = "No tiene permisos para la operaci&oacute;n.";
                         return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                     } else {
-                        return view('cliente.cliente-listar', compact('titulo'));
+                        return view('estado.estado-listar', compact('titulo'));
                     }
                 } else {
                     return redirect('admin/login');
