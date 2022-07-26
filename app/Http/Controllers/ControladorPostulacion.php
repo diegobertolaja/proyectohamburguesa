@@ -27,7 +27,7 @@ class ControladorPostulacion extends Controller
                         $mensaje = "No tiene permisos para la operaci&oacute;n.";
                         return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                     } else {
-                        return view('postulacion.cliente-listar', compact('titulo'));
+                        return view('postulacion.postulacion-listar', compact('titulo'));
                     }
                 } else {
                     return redirect('admin/login');
