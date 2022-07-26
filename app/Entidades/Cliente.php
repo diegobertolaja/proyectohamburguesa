@@ -60,16 +60,18 @@ class Cliente extends Model
         $request = $_REQUEST;
         $columns = array(
             0 => 'A.nombre',
-            1 => 'B.nombre',
-            2 => 'A.url',
-            3 => 'A.activo',
+            1 => 'A.mail',
+            2 => 'A.dni',
+            3 => 'A.telefono',
         );
         $sql = "SELECT DISTINCT
                     A.idcliente,
                     A.nombre,
-                    B.nombre as padre,
-                    A.url,
-                    A.activo
+                    A.apellido,
+                    A.mail,
+                    A.dni,
+                    A.telefono
+                    A.clave
                     FROM sistema_menues A
                     LEFT JOIN sistema_menues B ON A.id_padre = B.idcliente
                 WHERE 1=1
