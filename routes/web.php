@@ -105,7 +105,7 @@ Route::post('/admin/patente/nuevo/{id}', 'ControladorPatente@guardar');
 Route::get('/admin/cliente/nuevo', 'ControladorCliente@nuevo');
 Route::post('/admin/cliente/nuevo', 'ControladorCliente@guardar');
 Route::get('/admin/clientes', 'ControladorCliente@index');
-Route::get('/admin/clientes/cargarGrilla, 'ControladorCliente@cargarGrilla')->name('cliente.cargarGrilla');
+Route::get('/admin/clientes/cargarGrilla', 'ControladorCliente@cargarGrilla')->name('cliente.cargarGrilla');
 
 
 /* --------------------------------------------- */
