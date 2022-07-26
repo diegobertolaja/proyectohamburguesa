@@ -34,7 +34,7 @@ class ControladorEstado extends Controller
                 }
             }
     public function nuevo()
-    {
+  
         $titulo = "Nuevo estado;
         return view('estado.estado-nuevo', compact('titulo'));
             }
