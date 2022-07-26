@@ -50,18 +50,18 @@ class ControladorCliente extends Controller
         
                 for ($i = $inicio; $i < count($aClientes) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = '<a href="/admin/cliente' . $aClientes[$i]->idcliente . '">' . $aClientes[$i]->nombre . '</a>';
-                    $row[] = $aClientes[$i]->padre;
-                    $row[] = $aClientes[$i]->url;
-                    $row[] = $aClientes[$i]->activo;
+                    $row[] = $aClientes[$i]->nombre . "" . $aClientes[$i]->apellido;
+                    $row[] = $aClientes[$i]->mail;
+                    $row[] = $aClientes[$i]->dni;
+                    $row[] = $aClientes[$i]->telefono;
                     $cont++;
                     $data[] = $row;
                 }
         
                 $json_data = array(
                     "draw" => intval($request['draw']),
-                    "recordsTotal" => count($aCliente), //cantidad total de registros sin paginar
-                    "recordsFiltered" => count($aCliente), //cantidad total de registros en la paginacion
+                    "recordsTotal" => count($aClientes), //cantidad total de registros sin paginar
+                    "recordsFiltered" => count($aClientes), //cantidad total de registros en la paginacion
                     "data" => $data,
                 );
                 return json_encode($json_data);
