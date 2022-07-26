@@ -59,10 +59,11 @@ class Cliente extends Model
     {
         $request = $_REQUEST;
         $columns = array(
-            0 => 'A.nombre',
-            1 => 'A.mail',
-            2 => 'A.dni',
-            3 => 'A.telefono',
+            0 => 'A.idcliente',
+            1 => 'A.nombre',
+            2 => 'A.mail',
+            3 => 'A.dni',
+            4 => 'A.telefono',
         );
         $sql = "SELECT DISTINCT
                     A.idcliente,
