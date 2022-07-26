@@ -33,8 +33,20 @@ if (isset($msg)) {
 <script>
 	$(document).ready( function () {
       $('#grilla').DataTable();
+      var dataTable = $('#grilla').DataTable({
+	    "processing": true,
+        "serverSide": true,
+	    "bFilter": true,
+	    "bInfo": true,
+	    "bSearchable": true,
+        "pageLength": 25,
+        "order": [[ 0, "asc" ]],
+	    "ajax": "{{ route('categoria.cargarGrilla') }}"
+	});
+          
           
 } );
+
 	
 </script>
 @endsection

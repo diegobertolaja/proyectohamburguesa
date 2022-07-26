@@ -34,7 +34,8 @@ if (isset($msg)) {
     </thead>
 </table> 
 <script>
-
+    $(document).ready( function () {
+      $('#grilla').DataTable();
 var dataTable = $('#grilla').DataTable({
 	    "processing": true,
         "serverSide": true,
@@ -45,8 +46,6 @@ var dataTable = $('#grilla').DataTable({
         "order": [[ 0, "asc" ]],
 	    "ajax": "{{ route('cliente.cargarGrilla') }}"
 	});
-	$(document).ready( function () {
-      $('#grilla').DataTable();
           
 } );
 	
