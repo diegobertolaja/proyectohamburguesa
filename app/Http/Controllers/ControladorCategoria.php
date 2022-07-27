@@ -12,29 +12,60 @@ require app_path() . '/start/constants.php';
 
 class ControladorCategoria extends Controller
 {
+
+    public function index()
+    {
+        $titulo = "Listado de categorias";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('categoria.categoria-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }    
+
+    public function cargarGrilla()
+    {
+        $request = $_REQUEST;
+
+        $entidad = new Categoria();
+        $aCategorias = $entidad->obtenerFiltrado();
+
+        $data = array();
+        $cont = 0;
+
+        $inicio = $request['start'];
+        $registros_por_pagina = $request['length'];
+
+
+        for ($i = $inicio; $i < count($aClientes) && $cont < $registros_por_pagina; $i++) {
+            $row = array();
+            $row[] = "<a href='/admin/categoria/".$aCategorias[$i]->idcategoria."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = $aCategorias[$i]->nombre;
+            $cont++;
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            "draw" => intval($request['draw']),
+            "recordsTotal" => count($aCategorias), //cantidad total de registros sin paginar
+            "recordsFiltered" => count($aCategorias), //cantidad total de registros en la paginacion
+            "data" => $data,
+        );
+        return json_encode($json_data);
+    }           
     public function nuevo()
     {
         $titulo = "Nueva categoria";
         return view('categoria.categoria-nuevo', compact('titulo'));
-            }
-
-            public function index()
-            {
-                $titulo = "Listado de categorias";
-                if (Usuario::autenticado() == true) {
-                    if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                        $codigo = "MENUCONSULTA";
-                        $mensaje = "No tiene permisos para la operaci&oacute;n.";
-                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
-                    } else {
-                        return view('categoria.categoria-listar', compact('titulo'));
-                    }
-                } else {
-                    return redirect('admin/login');
-                }
             }    
   
-            public function guardar(Request $request) {
+    public function guardar(Request $request) {
                 try {
                     //Define la entidad servicio
                     $titulo = "Modificar categoria";
@@ -69,8 +100,8 @@ class ControladorCategoria extends Controller
                 }
         
                 $id = $entidad->categoria;
-                $cliente = new Categoria();
-                $cliente->obtenerPorId($id);
+                $categoria = new Categoria();
+                $categoria->obtenerPorId($id);
                 return view('categoria.categoria-nuevo', compact('msg', 'categoria', 'titulo')) . '?id=' . $categoria->idcategoria;
         
             }            

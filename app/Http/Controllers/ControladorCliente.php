@@ -68,7 +68,6 @@ class ControladorCliente extends Controller
         return view('cliente.cliente-nuevo', compact('titulo', es));
             }
          
-  
     public function guardar(Request $request) {
             try {
                 //Define la entidad servicio
