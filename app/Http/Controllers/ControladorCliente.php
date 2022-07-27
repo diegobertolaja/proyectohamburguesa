@@ -12,13 +12,8 @@ require app_path() . '/start/constants.php';
 
 class ControladorCliente extends Controller
 {
-    public function nuevo()
-    {
-        $titulo = "Nuevo cliente";
-        return view('cliente.cliente-nuevo', compact('titulo'));
-            }
 
-            public function index()
+    public function index()
             {
                 $titulo = "Listado de clientes";
                 if (Usuario::autenticado() == true) {
@@ -33,7 +28,7 @@ class ControladorCliente extends Controller
                     return redirect('admin/login');
                 }
             }
-        
+
             public function cargarGrilla()
             {
                 $request = $_REQUEST;
@@ -66,10 +61,16 @@ class ControladorCliente extends Controller
                     "data" => $data,
                 );
                 return json_encode($json_data);
-            }            
+            }                  
 
-
-        public function guardar(Request $request) {
+    public function nuevo()
+    {
+        $titulo = "Nuevo cliente";
+        return view('cliente.cliente-nuevo', compact('titulo', es));
+            }
+         
+  
+    public function guardar(Request $request) {
             try {
                 //Define la entidad servicio
                 $titulo = "Modificar cliente";
