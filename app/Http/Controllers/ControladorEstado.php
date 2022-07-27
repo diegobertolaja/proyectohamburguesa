@@ -12,6 +12,15 @@ require app_path() . '/start/constants.php';
 
 class ControladorEstado extends Controller
 {
+    
+    public function nuevo()
+    {
+        $titulo = "Nuevo estado";
+        $estado = new Estado();
+        return view('estado.estado-nuevo', compact('titulo', 'estado'));
+
+}   
+
     public function index()
     {
         $titulo = "Listado de estados";
@@ -56,14 +65,8 @@ class ControladorEstado extends Controller
                     "data" => $data,
                 );
                 return json_encode($json_data);
-            }                  
-    
-    public function nuevo()
-    {
-        $titulo = "Nuevo estado";
-        return view('estado.estado-nuevo', compact('titulo', es));
-            }
-   
+            }                
+     
     public function guardar(Request $request) {
                 try {
                     //Define la entidad servicio

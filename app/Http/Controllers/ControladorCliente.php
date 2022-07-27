@@ -12,6 +12,15 @@ require app_path() . '/start/constants.php';
 
 class ControladorCliente extends Controller
 {
+    
+    
+    public function nuevo()
+    {
+        $titulo = "Nuevo cliente";
+        $cliente = new Cliente();
+        return view('cliente.cliente-nuevo', compact('titulo', 'cliente'));
+            }
+
     public function index()
             {
                 $titulo = "Listado de clientes";
@@ -61,12 +70,6 @@ class ControladorCliente extends Controller
                 );
                 return json_encode($json_data);
             }                  
-
-    public function nuevo()
-    {
-        $titulo = "Nuevo cliente";
-        return view('cliente.cliente-nuevo', compact('titulo', es));
-            }
          
     public function guardar(Request $request) {
             try {

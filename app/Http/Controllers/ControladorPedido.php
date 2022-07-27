@@ -15,6 +15,22 @@ require app_path() . '/start/constants.php';
 class ControladorPedido extends Controller
 {
     
+    public function nuevo()
+    {
+        $titulo = "Nuevo Pedido";
+        $sucursal = new Sucursal ();
+        $aSucursales = $sucursal->obtenerTodos ();
+
+        $cliente = new Cliente ();
+        $aClientes = $cliente->obtenerTodos ();
+
+        $estado = new Estado ();
+        $aEstados = $estado->obtenerTodos ();
+
+        return view('pedido.pedido-nuevo', compact('titulo', 'aSucursales', 'aClientes', 'aEstados' ));
+            }
+    
+    
     public function index()
             {
                 $titulo = "Listado de pedidos";
@@ -65,22 +81,7 @@ class ControladorPedido extends Controller
                 return json_encode($json_data);
             }           
     
-            public function nuevo()
-    {
-        $titulo = "Nuevo Pedido";
-        $sucursal = new Sucursal ();
-        $aSucursales = $sucursal->obtenerTodos ();
-
-        $cliente = new Cliente ();
-        $aClientes = $cliente->obtenerTodos ();
-
-        $estado = new Estado ();
-        $aEstados = $estado->obtenerTodos ();
-
-        return view('pedido.pedido-nuevo', compact('titulo', 'aSucursales', 'aClientes', 'aEstados' ));
-            }
-
-            
+                   
             public function guardar(Request $request) {
                 try {
                     //Define la entidad servicio

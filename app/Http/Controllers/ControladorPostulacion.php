@@ -13,6 +13,14 @@ require app_path() . '/start/constants.php';
 class ControladorPostulacion extends Controller
 {
     
+    public function nuevo()
+    {
+        $titulo = "Nueva Postulacion";
+        $postulacion = new Postulacion();
+        return view('postulacion.postulacion-nuevo', compact('titulo', 'postulacion'));
+            }
+
+    
     public function index()
     {
         $titulo = "Listado de postulaciones";
@@ -62,29 +70,7 @@ class ControladorPostulacion extends Controller
         );
         return json_encode($json_data);
     }           
-    
-    public function nuevo()
-    {
-        $titulo = "Nueva postulacion";
-        return view('postulacion.postulacion-nuevo', compact('titulo'));
-            }
-
-            public function index()
-            {
-                $titulo = "Listado de postulaciones";
-                if (Usuario::autenticado() == true) {
-                    if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                        $codigo = "MENUCONSULTA";
-                        $mensaje = "No tiene permisos para la operaci&oacute;n.";
-                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
-                    } else {
-                        return view('postulacion.postulacion-listar', compact('titulo'));
-                    }
-                } else {
-                    return redirect('admin/login');
-                }
-            }
-
+   
             public function guardar(Request $request) {
                 try {
                     //Define la entidad servicio

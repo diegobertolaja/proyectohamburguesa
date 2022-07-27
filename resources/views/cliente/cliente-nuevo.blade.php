@@ -67,7 +67,7 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Clave: *</label>
-                    <input type="text" id="txtClave" name="txtClave" class="form-control" value="{{ $cliente->clave }}" required>
+                    <input type="text" id="txtClave" name="txtClave" class="form-control" value="" required>
                 </div>
                 </div>
                 </form>

@@ -12,6 +12,15 @@ require app_path() . '/start/constants.php';
 
 class ControladorSucursal extends Controller
 {
+    
+    public function nuevo()
+    {
+        $titulo = "Nueva Sucursal";
+        $sucursal = new Sucursal();
+        return view('sucursal.sucursal-nuevo', compact('titulo', 'sucursal'));
+            }
+
+    
     public function index()
     {
         $titulo = "Listado de sucursales";
@@ -60,13 +69,7 @@ class ControladorSucursal extends Controller
             "data" => $data,
         );
         return json_encode($json_data);
-    }           
-    
-    public function nuevo()
-    {
-        $titulo = "Nueva sucursal";
-        return view('sucursal.sucursal-nuevo', compact('titulo'));
-            }     
+    }            
 
     public function guardar(Request $request) {
                 try {

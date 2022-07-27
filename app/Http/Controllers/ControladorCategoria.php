@@ -13,6 +13,14 @@ require app_path() . '/start/constants.php';
 class ControladorCategoria extends Controller
 {
 
+    public function nuevo()
+    {
+        $titulo = "Nueva categoria";
+        $categoria = new Categoria();
+        return view('categoria.categoria-nuevo', compact('titulo', 'categoria'));
+
+}   
+    
     public function index()
     {
         $titulo = "Listado de categorias";
@@ -59,12 +67,7 @@ class ControladorCategoria extends Controller
         );
         return json_encode($json_data);
     }           
-    public function nuevo()
-    {
-        $titulo = "Nueva categoria";
-        return view('categoria.categoria-nuevo', compact('titulo'));
-            }    
-  
+     
     public function guardar(Request $request) {
                 try {
                     //Define la entidad servicio
