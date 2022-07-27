@@ -16,6 +16,7 @@
     <li class="btn-item"><a title="Recargar" href="#" class="fa fa-refresh" aria-hidden="true" onclick='window.location.replace("/admin/pedidos");'><span>Recargar</span></a></li>
 </ol>
 @endsection
+
 @section('contenido')
 <?php
 if (isset($msg)) {
