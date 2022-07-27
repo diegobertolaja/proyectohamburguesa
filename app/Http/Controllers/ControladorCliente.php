@@ -12,7 +12,6 @@ require app_path() . '/start/constants.php';
 
 class ControladorCliente extends Controller
 {
-
     public function index()
             {
                 $titulo = "Listado de clientes";
