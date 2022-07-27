@@ -53,6 +53,44 @@ class Postulacion extends Model
         return $this->idpostulacion = DB::getPdo()->lastInsertId();
     }
 
+    public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idpostulacion',
+            1 => 'A.nombre',
+            2 => 'A.apellido',
+            3 => 'A.telefono',
+            4 => 'A.mail',
+            5 => 'A.curriculum',
+        );
+        $sql = "SELECT DISTINCT
+                    A.idpostulacion,
+                    A.nombre,
+                    A.apellido,
+                    A.telefono,
+                    A.mail,
+                    A.curriculum
+                    FROM sistema_menues A
+                    LEFT JOIN sistema_menues B ON A.id_padre = B.idpostulacion
+                WHERE 1=1
+                ";
+
+        //Realiza el filtrado
+        if (!empty($request['search']['value'])) {
+            $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.apellido LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.telefono LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.mail LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.curriculum LIKE '%" . $request['search']['value'] . "%' )";
+        }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
+    
     public function guardar() {
       $sql = "UPDATE $this->table SET
           nombre='$this->nombre',
