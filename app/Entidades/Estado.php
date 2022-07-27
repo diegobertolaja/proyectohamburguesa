@@ -40,12 +40,12 @@ class Estado extends Model
     {
         $request = $_REQUEST;
         $columns = array(
-            0 => 'A.nombre',
+            0 => 'A.idestado',
+            1 => 'A.nombre',
                    );
         $sql = "SELECT DISTINCT
                     A.idestado,
                     A.nombre,
-                    B.nombre as padre,
                     FROM sistema_menues A
                     LEFT JOIN sistema_menues B ON A.id_padre = B.idestado
                 WHERE 1=1
@@ -54,9 +54,7 @@ class Estado extends Model
         //Realiza el filtrado
         if (!empty($request['search']['value'])) {
             $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
-            $sql .= " OR B.nombre LIKE '%" . $request['search']['value'] . "%' ";
-            $sql .= " OR A.url LIKE '%" . $request['search']['value'] . "%' )";
-        }
+         }
         $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
 
         $lstRetorno = DB::select($sql);

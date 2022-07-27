@@ -24,6 +24,33 @@ class Categoria extends Model
         $this->nombre = $request->input('txtNombre');
            }
 
+           public function obtenerFiltrado()
+           {
+               $request = $_REQUEST;
+               $columns = array(
+                   0 => 'A.idcategoria',
+                   1 => 'A.nombre',
+                   
+               );
+               $sql = "SELECT DISTINCT
+                           A.idcategoria,
+                           A.nombre,
+                           FROM sistema_menues A
+                           LEFT JOIN sistema_menues B ON A.id_padre = B.idcategoria
+                       WHERE 1=1
+                       ";
+       
+               //Realiza el filtrado
+               if (!empty($request['search']['value'])) {
+                   $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+               }
+               $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+       
+               $lstRetorno = DB::select($sql);
+       
+               return $lstRetorno;
+           }       
+
 
     public function insertar()
     {
