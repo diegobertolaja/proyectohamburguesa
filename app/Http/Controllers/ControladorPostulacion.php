@@ -12,6 +12,57 @@ require app_path() . '/start/constants.php';
 
 class ControladorPostulacion extends Controller
 {
+    
+    public function index()
+    {
+        $titulo = "Listado de postulaciones";
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
+                $codigo = "MENUCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                return view('postulacion.postulacion-listar', compact('titulo'));
+            }
+        } else {
+            return redirect('admin/login');
+        }
+    }
+
+    public function cargarGrilla()
+    {
+        $request = $_REQUEST;
+
+        $entidad = new Postulacion();
+        $aPostulaciones = $entidad->obtenerFiltrado();
+
+        $data = array();
+        $cont = 0;
+
+        $inicio = $request['start'];
+        $registros_por_pagina = $request['length'];
+
+
+        for ($i = $inicio; $i < count($aPostulaciones) && $cont < $registros_por_pagina; $i++) {
+            $row = array();
+            $row[] = "<a href='/admin/postulacion/".$aPostulaciones[$i]->idpostulacion."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = $aPostulaciones[$i]->nombre . "" . $aPostulaciones[$i]->apellido;
+            $row[] = $aPostulaciones[$i]->telefono;
+            $row[] = $aPostulaciones[$i]->mail;
+            $row[] = $aPostulaciones[$i]->curriculum;
+            $cont++;
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            "draw" => intval($request['draw']),
+            "recordsTotal" => count($aPostulaciones), //cantidad total de registros sin paginar
+            "recordsFiltered" => count($aPostulaciones), //cantidad total de registros en la paginacion
+            "data" => $data,
+        );
+        return json_encode($json_data);
+    }           
+    
     public function nuevo()
     {
         $titulo = "Nueva postulacion";
