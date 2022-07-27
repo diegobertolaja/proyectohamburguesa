@@ -41,16 +41,27 @@ class Pedido extends Model
         $columns = array(
             0 => 'A.idpedido',
             1 => 'A.fecha',
-            2 => 'A.descripcion',
-            3 => 'A.total',
+            2 => 'B.nombre',
+            3 => 'C.nombre',
+            4 => 'D.nombre',
+            4=> 'C.total',
            
         $sql = "SELECT DISTINCT
                     A.idpedido,
                     A.fecha,
                     A.descripcion,
+                    B.nombre AS sucursal,
+                    C.nombre AS cliente,
+                    D.nombre AS estado,
+                    A.fk_idsucursal, 
+                    A.fk_idcliente, 
+                    A.fk_idestado,
                     A.total
-                    FROM sistema_menues A
-                    LEFT JOIN sistema_menues B ON A.id_padre = B.idpedido
+                    FROM pedidos A
+                    INNER JOIN sucursales B on A.fk_idsucursal = B.idsucursal
+                    INNER JOIN clientes C ON A.fk_idcliente = B.idcliente
+                    INNER JOIN sucursales D ON A.fk_idestado = B.idestado
+
                 WHERE 1=1
                 ";
 
