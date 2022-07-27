@@ -56,6 +56,43 @@ class Producto extends Model
         return $this->idproducto = DB::getPdo()->lastInsertId();
     }
 
+    public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idproducto',
+            1 => 'A.nombre',
+            2 => 'A.cantidad',
+            3 => 'A.precio',
+            4 => 'A.imagen',
+            5 => 'A.descripcion',
+        );
+        $sql = "SELECT DISTINCT
+                    A.idproducto,
+                    A.nombre,
+                    A.cantidad,
+                    A.precio,
+                    A.imagen,
+                    A.descripcion
+                    FROM sistema_menues A
+                    LEFT JOIN sistema_menues B ON A.id_padre = B.iidproducto
+                WHERE 1=1
+                ";
+
+        //Realiza el filtrado
+        if (!empty($request['search']['value'])) {
+            $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.cantidad LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.precio LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.imagen LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.descripcion LIKE '%" . $request['search']['value'] . "%' )";
+            }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
 
     public function guardar() {
       $sql = "UPDATE $this->table SET

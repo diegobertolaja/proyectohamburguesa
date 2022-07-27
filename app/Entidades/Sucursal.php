@@ -50,7 +50,41 @@ class Sucursal extends Model
         ]);
         return $this->idsucursal = DB::getPdo()->lastInsertId();
     }
+    
+    public function obtenerFiltrado()
+    {
+        $request = $_REQUEST;
+        $columns = array(
+            0 => 'A.idsucursal',
+            1 => 'A.direccion',
+            2 => 'A.telefono',
+            3 => 'A.linkmapa',
+            4 => 'A.nombre',
+        );
+        $sql = "SELECT DISTINCT
+                    A.idsucursal,
+                    A.direccion,
+                    A.telefono,
+                    A.linkmapa,
+                    A.nombre
+                    FROM sistema_menues A
+                    LEFT JOIN sistema_menues B ON A.id_padre = B.idsucursal
+                WHERE 1=1
+                ";
 
+        //Realiza el filtrado
+        if (!empty($request['search']['value'])) {
+            $sql .= " AND ( A.direccion LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.telefono LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR A.linkmapa LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.nombre LIKE '%" . $request['search']['value'] . "%' )";
+        }
+        $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
+
+        $lstRetorno = DB::select($sql);
+
+        return $lstRetorno;
+    }
     public function guardar() {
       $sql = "UPDATE $this->table SET
           direccion=$this->direccion,
