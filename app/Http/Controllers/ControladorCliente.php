@@ -12,8 +12,6 @@ require app_path() . '/start/constants.php';
 
 class ControladorCliente extends Controller
 {
-    
-    
     public function nuevo()
     {
         $titulo = "Nuevo cliente";
