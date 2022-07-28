@@ -93,14 +93,14 @@ class ControladorProducto extends Controller
                     } else {
                         if ($_POST["id"] > 0) {
 
-                    $productoAux = new Producto();
-                    $productonAux->obtenerPorId($entidad->idproducto);
+                    $productoAnt = new Producto();
+                    $productonAnt->obtenerPorId($entidad->idproducto);
                 
                     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
                     //Eliminar imagen anterior
                     @unlink(env('APP_PATH') . "/public/files/$productoAux->imagen");                          
                      } else {
-                    $entidad->imagen = $productoAux->imagen;
+                    $entidad->imagen = $productoAnt->imagen;
                      }
                 
                     //Es actualizacion
@@ -139,6 +139,7 @@ class ControladorProducto extends Controller
         
                         $entidad = new Producto();
                         $entidad->cargarDesdeRequest($request);
+                        @unlink(env('APP_PATH') . "/public/files/$entidad->imagen");  
                         $entidad->eliminar();
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
