@@ -42,18 +42,37 @@ class ControladorProducto extends Controller
                     $titulo = "Modificar producto";
                     $entidad = new Producto();
                     $entidad->cargarDesdeRequest($request);
-        
+
+                    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
+                        $extension = pathinfo($_FILES ["archivo"]["name"], PATHINFO_EXTENSION);
+                        $nombre = date("Ymdhmsi") . ".$extension";
+                        $archivo = $_FILES["archivo"]["tmp_name"];
+                        move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+                        $entidad->curriculum = $nombre;
+                    }
+                
                     //validaciones
                     if ($entidad->nombre == "") {
                         $msg["ESTADO"] = MSG_ERROR;
                         $msg["MSG"] = "Complete todos los datos";
                     } else {
                         if ($_POST["id"] > 0) {
-                            //Es actualizacion
-                            $entidad->guardar();
+
+                    $postulacionAux = new Postulacion();
+                    $postulacionAux->obtenerPorId($entidad->idpostulacion);
+                
+                    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+                    //Eliminar imagen anterior
+                    @unlink(env('APP_PATH') . "/public/files/$postulacionAux->imagen");                          
+                     } else {
+                    $entidad->curriculum = $postulacionAux->imagen;
+                     }
+                
+                    //Es actualizacion
+                        $entidad->guardar();
         
-                            $msg["ESTADO"] = MSG_SUCCESS;
-                            $msg["MSG"] = OKINSERT;
+                        $msg["ESTADO"] = MSG_SUCCESS;
+                        $msg["MSG"] = OKINSERT;
                         } else {
                             //Es nuevo
                             $entidad->insertar();
