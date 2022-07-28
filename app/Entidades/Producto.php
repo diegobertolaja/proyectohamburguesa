@@ -74,6 +74,8 @@ class Producto extends Model
                     A.precio,
                     A.fk_idcategoria,
                     B.nombre AS categoria,
+                    A.descripcion,
+                    A.imagen,
                     FROM productos A
                     INNER JOIN categorias B ON A.fk_idcategoria = B.fk_idcategoria
                 WHERE 1=1
@@ -84,7 +86,7 @@ class Producto extends Model
             $sql .= " AND ( A.nombre LIKE '%" . $request['search']['value'] . "%' ";
             $sql .= " OR A.cantidad LIKE '%" . $request['search']['value'] . "%' ";
             $sql .= " OR A.precio LIKE '%" . $request['search']['value'] . "%' )";
-            $sql .= " OR A.imagen LIKE '%" . $request['search']['value'] . "%' )";
+            $sql .= " OR A.categoria LIKE '%" . $request['search']['value'] . "%' )";
             $sql .= " OR A.descripcion LIKE '%" . $request['search']['value'] . "%' )";
             }
         $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
