@@ -77,6 +77,14 @@ class ControladorPostulacion extends Controller
                     $titulo = "Modificar postulacion";
                     $entidad = new Postulacion();
                     $entidad->cargarDesdeRequest($request);
+
+                    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
+                        $nombre = date("Ymdhmsi") . ".jpg";
+                        $archivo = $_FILES["archivo"]["tmp_name"];
+                        move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+                        $entidad->imagen = $nombre;
+                    }
+        
         
                     //validaciones
                     if ($entidad->nombre == "") {
