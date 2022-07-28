@@ -47,15 +47,15 @@ if (isset($msg)) {
                 <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
                 <div class="form-group col-lg-6">
                 <label>Nombre: *</label>
-                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="{{ $producto->nombre }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Cantidad: *</label>
-                    <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="" required>
+                    <input type="number" id="txtCantidad" name="txtCantidad" class="form-control" value="{{ $producto->cantidad }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Precio: *</label>
-                    <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="" required>
+                    <input type="number" id="txtPrecio" name="txtPrecio" class="form-control" value="{{ $producto->precio }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Categoría: *</label>
@@ -65,11 +65,11 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Descripción: *</label>
-                    <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" equired></textarea>  
+                    <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" required></textarea>  
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Imagen: *</label>
-                    <input type="file" id="imagen" name="imagen" class="form-control-file" value="" required>
+                    <input type="file" id="imagen" name="imagen" class="form-control-file" value="{{ $producto->imagen }}" required>
                     <img src="" alt="">
                 </div>
                 </div>
