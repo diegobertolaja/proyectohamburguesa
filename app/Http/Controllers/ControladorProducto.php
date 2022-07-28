@@ -48,7 +48,7 @@ class ControladorProducto extends Controller
                         $nombre = date("Ymdhmsi") . ".$extension";
                         $archivo = $_FILES["archivo"]["tmp_name"];
                         move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
-                        $entidad->curriculum = $nombre;
+                        $entidad->imagen = $nombre;
                     }
                 
                     //validaciones
@@ -58,14 +58,14 @@ class ControladorProducto extends Controller
                     } else {
                         if ($_POST["id"] > 0) {
 
-                    $postulacionAux = new Postulacion();
-                    $postulacionAux->obtenerPorId($entidad->idpostulacion);
+                    $productoAux = new Postulacion();
+                    $productonAux->obtenerPorId($entidad->idproducto);
                 
                     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
                     //Eliminar imagen anterior
-                    @unlink(env('APP_PATH') . "/public/files/$postulacionAux->imagen");                          
+                    @unlink(env('APP_PATH') . "/public/files/$productoAux->imagen");                          
                      } else {
-                    $entidad->curriculum = $postulacionAux->imagen;
+                    $entidad->imagen = $productoAux->imagen;
                      }
                 
                     //Es actualizacion
