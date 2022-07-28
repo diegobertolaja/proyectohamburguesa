@@ -80,7 +80,7 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Total: *</label>
-                    <input type="number" id="txtTotal" name="txtTotal" class="form-control" value="" required>
+                    <input type="number" id="txtTotal" name="txtTotal" class="form-control" value="{{ $pedido->total }}" required>
                 </div>
                 </div>
                 </form>
