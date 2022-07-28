@@ -27,6 +27,7 @@ if (isset($msg)) {
 <table id="grilla" class="display">
     <thead>
         <tr>
+            <th></th>
             <th>Nombre</th>
             <th>Cantidad</th>
             <th>Precio</th>
