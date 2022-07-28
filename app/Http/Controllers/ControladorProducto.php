@@ -58,7 +58,7 @@ class ControladorProducto extends Controller
                     } else {
                         if ($_POST["id"] > 0) {
 
-                    $productoAux = new Postulacion();
+                    $productoAux = new Producto();
                     $productonAux->obtenerPorId($entidad->idproducto);
                 
                     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
