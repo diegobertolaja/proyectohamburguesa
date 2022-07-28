@@ -47,23 +47,23 @@ if (isset($msg)) {
                 <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
                 <div class="form-group col-lg-6">
                 <label>Nombre: *</label>
-                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" value="" required>
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" value=" {{ $postulacion->nombre }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Apellido: *</label>
-                    <input type="text" id="txtApellido" name="txtApellido" class="form-control" value="" required>
+                    <input type="text" id="txtApellido" name="txtApellido" class="form-control" value="{{ $postulacion->apellido }}" required>
                 </div>
                <div class="form-group col-lg-6">
                 <label>Mail: *</label>
-                    <input type="text" id="txtMail" name="txtMail" class="form-control" value="" required>
+                    <input type="text" id="txtMail" name="txtMail" class="form-control" value="{{ $postulacion->mail }}" required>
                 </div>
                <div class="form-group col-lg-6">
                 <label>Teléfono: *</label>
-                    <input type="text" id="txtTelefono" name="txtTelefono" class="form-control" value="" required>
+                    <input type="text" id="txtTelefono" name="txtTelefono" class="form-control" value="{{ $postulacion->telefono }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Curriculum: *</label>
-                    <input type="text" id="txtCurriculum" name="txtCurriculum" class="form-control" value="" required>
+                    <input type="text" id="txtCurriculum" name="txtCurriculum" class="form-control" value="{{ $postulacion->curriculum }}" required>
                 </div>
                 </div>
                 </form>

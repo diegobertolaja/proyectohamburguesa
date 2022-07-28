@@ -47,7 +47,7 @@ if (isset($msg)) {
                 <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
                 <div class="form-group col-lg-6">
                 <label>Fecha: *</label>
-                    <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="" required>
+                    <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="{{ $pedido->fecha }}" required>
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Cliente: *</label>
@@ -68,7 +68,7 @@ if (isset($msg)) {
                 </div>
                 <div class="form-group col-lg-12">
                 <label>Descripción: *</label>
-                    <textarea id="txtDescripcion"name="txtDescripcion" class="form-control" value="" required></textarea>  
+                    <textarea id="txtDescripcion"name="txtDescripcion" class="form-control" value="{{ $pedido->descripcion }}" required></textarea>  
                 </div>
                 <div class="form-group col-lg-6">
                 <label>Estado: *</label>
@@ -121,7 +121,7 @@ if (isset($msg)) {
     function eliminar() {
         $.ajax({
             type: "GET",
-            url: "{{ asset('admin/sistema/menu/eliminar') }}",
+            url: "{{ asset('admin/pedido/eliminar') }}",
             data: { id:globalId },
             async: true,
             dataType: "json",
