@@ -54,10 +54,11 @@ class ControladorPostulacion extends Controller
         for ($i = $inicio; $i < count($aPostulaciones) && $cont < $registros_por_pagina; $i++) {
             $row = array();
             $row[] = "<a href='/admin/postulacion/".$aPostulaciones[$i]->idpostulacion."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
-            $row[] = $aPostulaciones[$i]->nombre . "" . $aPostulaciones[$i]->apellido;
+            $row[] = $aPostulaciones[$i]->nombre;
+            $row[] = $aPostulaciones[$i]->apellido;
             $row[] = $aPostulaciones[$i]->telefono;
             $row[] = $aPostulaciones[$i]->mail;
-            $row[] = $aPostulaciones[$i]->curriculum;
+            $row[] = "<a href='/files/" . $aPostulaciones[$i]->curriculum . "' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
             $cont++;
             $data[] = $row;
         }

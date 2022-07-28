@@ -72,10 +72,10 @@ class Producto extends Model
                     A.nombre,
                     A.cantidad,
                     A.precio,
-                    A.imagen,
-                    A.descripcion
-                    FROM sistema_menues A
-                    LEFT JOIN sistema_menues B ON A.id_padre = B.iidproducto
+                    A.fk_idcategoria,
+                    B.nombre AS categoria,
+                    FROM productos A
+                    INNER JOIN categorias B ON A.fk_idcategoria = B.fk_idcategoria
                 WHERE 1=1
                 ";
 
