@@ -15,6 +15,8 @@ require app_path() . '/start/constants.php';
 class ControladorPedido extends Controller
 {
     
+    
+    
     public function nuevo()
     {
         $titulo = "Nuevo Pedido";
@@ -35,8 +37,8 @@ class ControladorPedido extends Controller
             {
                 $titulo = "Listado de pedidos";
                 if (Usuario::autenticado() == true) {
-                    if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                        $codigo = "MENUCONSULTA";
+                    if (!Patente::autorizarOperacion("PEDIDOCONSULTA")) {
+                        $codigo = "PEDIDOCONSULTA";
                         $mensaje = "No tiene permisos para la operaci&oacute;n.";
                         return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                     } else {
@@ -127,7 +129,7 @@ class ControladorPedido extends Controller
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("MENUELIMINAR")) {
+                    if (Patente::autorizarOperacion("PEDIDOELIMINAR")) {
         
                         $entidad = new Pedido();
                         $entidad->cargarDesdeRequest($request);
@@ -135,7 +137,7 @@ class ControladorPedido extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "ELIMINARPROFESIONAL";
+                        $codigo = "PEDIDOELIMINAR";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);

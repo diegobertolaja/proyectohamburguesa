@@ -16,17 +16,26 @@ class ControladorPostulacion extends Controller
     public function nuevo()
     {
         $titulo = "Nueva Postulacion";
-        $postulacion = new Postulacion();
-        return view('postulacion.postulacion-nuevo', compact('titulo', 'postulacion'));
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("POSTULACIONCONSULTA")) {
+                $codigo = "POSTULACIONCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $postulacion = New Postulacion ();
+                return view('postulacion.postulacion-nuevo', compact('titulo', 'postulacion'));
             }
+        } else {
+            return redirect('admin/login');
+        }
 
     
     public function index()
     {
         $titulo = "Listado de postulaciones";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("POSTULACIONCONSULTA")) {
+                $codigo = "POSTULACIONCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -135,7 +144,7 @@ class ControladorPostulacion extends Controller
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("MENUELIMINAR")) {
+                    if (Patente::autorizarOperacion("POSTULACIONELIMINAR")) {
         
                         $entidad = new Postulacion();
                         $entidad->cargarDesdeRequest($request);
@@ -143,7 +152,7 @@ class ControladorPostulacion extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "ELIMINARPROFESIONAL";
+                        $codigo = "POSTULACIONELIMINAR";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);
