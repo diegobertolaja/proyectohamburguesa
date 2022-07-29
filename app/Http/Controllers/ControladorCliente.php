@@ -124,8 +124,8 @@ class ControladorCliente extends Controller
         {
             $titulo = "Modificar Cliente";
             if (Usuario::autenticado() == true) {
-                if (!Patente::autorizarOperacion("CLIENTEMODIFICACION")) {
-                    $codigo = "CLIENTEMODIFICACION";
+                if (!Patente::autorizarOperacion("CLIENTEEDITAR")) {
+                    $codigo = "CLIENTEEDITAR";
                     $mensaje = "No tiene pemisos para la operaci&oacute;n.";
                     return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                 } else {
