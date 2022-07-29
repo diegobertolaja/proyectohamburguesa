@@ -142,7 +142,9 @@
         </nav>
       </div>
     </header>
+    </div>    
   <!-- end header section -->
+
 @yield('contenido')    
 
   <!-- footer section -->
