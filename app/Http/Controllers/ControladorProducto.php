@@ -15,17 +15,25 @@ class ControladorProducto extends Controller
     public function nuevo()
     {
         $titulo = "Nuevo Producto";
-        $producto = new Producto();
-        return view('producto.producto-nuevo', compact('titulo', 'producto'));
+        if (Usuario::autenticado() == true) {
+            if (!Patente::autorizarOperacion("PRODUCTOCONSULTA")) {
+                $codigo = "PRODUCTOCONSULTA";
+                $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+            } else {
+                $producto = New Producto ();
+                return view('producto.producto-nuevo', compact('titulo', 'producto'));
             }
-
+        } else {
+            return redirect('admin/login');
+        }
 
             public function index()
             {
                 $titulo = "Listado de productos";
                 if (Usuario::autenticado() == true) {
-                    if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                        $codigo = "MENUCONSULTA";
+                    if (!Patente::autorizarOperacion("PRODUCTOCONSULTA")) {
+                        $codigo = "PRODUCTOCONSULTA";
                         $mensaje = "No tiene permisos para la operaci&oacute;n.";
                         return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                     } else {
@@ -135,7 +143,7 @@ class ControladorProducto extends Controller
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("MENUELIMINAR")) {
+                    if (Patente::autorizarOperacion("PRODUCTOELIMINAR")) {
         
                         $entidad = new Producto();
                         $entidad->cargarDesdeRequest($request);
@@ -144,7 +152,7 @@ class ControladorProducto extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "ELIMINARPROFESIONAL";
+                        $codigo = "PRODUCTOELIMINAR";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);
