@@ -22,7 +22,7 @@ class ControladorProducto extends Controller
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
                 $producto = New Producto ();
-                return view('producto.producto-nuevo', compact('titulo', 'producto'));
+                return view('producto.producto-nuevo', compact('titulo', 'producto', 'aCategoria'));
             }
         } else {
             return redirect('admin/login');

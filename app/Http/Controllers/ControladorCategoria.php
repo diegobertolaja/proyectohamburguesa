@@ -118,6 +118,24 @@ class ControladorCategoria extends Controller
         
             }      
             
+            public function editar($id)
+            {
+                $titulo = "Modificar Categoria";
+                if (Usuario::autenticado() == true) {
+                    if (!Patente::autorizarOperacion("CATEGORIAEDITAR")) {
+                        $codigo = "CATEGORIAEDITAR";
+                        $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                    } else {
+                        $categoria = new Categoria();
+                        $categoria->obtenerPorId($id);
+       
+                        return view('categoria.categoria-nuevo', compact('categoria', 'titulo', 'array_menu', 'array_menu_grupo'));
+                    }
+                } else {
+                    return redirect('admin/login');
+                }
+            
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
