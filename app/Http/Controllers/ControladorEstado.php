@@ -16,17 +16,26 @@ class ControladorEstado extends Controller
     public function nuevo()
     {
         $titulo = "Nuevo estado";
-        $estado = new Estado();
-        return view('estado.estado-nuevo', compact('titulo', 'estado'));
-
-}   
+      
+            if (Usuario::autenticado() == true) {
+                if (!Patente::autorizarOperacion("ESTADOCONSULTA")) {
+                    $codigo = "ESTADOCONSULTA";
+                    $mensaje = "No tiene permisos para la operaci&oacute;n.";
+                    return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                } else {
+                    $estado = New Estado ();
+                    return view('estado.estado-nuevo', compact('titulo', 'estado'));
+                }
+            } else {
+                return redirect('admin/login');
+            }
 
     public function index()
     {
         $titulo = "Listado de estados";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("MENUCONSULTA")) {
-                $codigo = "MENUCONSULTA";
+            if (!Patente::autorizarOperacion("ESTADOCONSULTA")) {
+                $codigo = "ESTADOCONSULTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -112,7 +121,7 @@ class ControladorEstado extends Controller
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("MENUELIMINAR")) {
+                    if (Patente::autorizarOperacion("ESTADOELIMINAR")) {
         
                         $entidad = new Estado();
                         $entidad->cargarDesdeRequest($request);
@@ -120,7 +129,7 @@ class ControladorEstado extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "ELIMINARPROFESIONAL";
+                        $codigo = "ESTADOELIMINAR";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);
