@@ -18,8 +18,8 @@ class ControladorCategoria extends Controller
         $titulo = "Nueva categoria";
       
             if (Usuario::autenticado() == true) {
-                if (!Patente::autorizarOperacion("CATEGORIACONSULTA")) {
-                    $codigo = "CATEGORIACONSULTA";
+                if (!Patente::autorizarOperacion("CATEGORIAALTA")) {
+                    $codigo = "CATEGORIAALTA";
                     $mensaje = "No tiene permisos para la operaci&oacute;n.";
                     return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                 } else {
@@ -140,7 +140,7 @@ class ControladorCategoria extends Controller
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("CATEGORIAELIMINAR")) {
+                    if (Patente::autorizarOperacion("CATEGORIABAJA")) {
         
                         $entidad = new Categoria();
                         $entidad->cargarDesdeRequest($request);
@@ -148,7 +148,7 @@ class ControladorCategoria extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "CATEGORIAELIMINAR";
+                        $codigo = "CATEGORIABAJA";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);

@@ -18,8 +18,8 @@ class ControladorEstado extends Controller
         $titulo = "Nuevo estado";
       
             if (Usuario::autenticado() == true) {
-                if (!Patente::autorizarOperacion("ESTADOCONSULTA")) {
-                    $codigo = "ESTADOCONSULTA";
+                if (!Patente::autorizarOperacion("ESTADOALTA")) {
+                    $codigo = "ESTADOALTA";
                     $mensaje = "No tiene permisos para la operaci&oacute;n.";
                     return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
                 } else {
@@ -117,11 +117,29 @@ class ControladorEstado extends Controller
         
             }   
 
+            public function editar($id)
+            {
+                $titulo = "Modificar Estado";
+                if (Usuario::autenticado() == true) {
+                    if (!Patente::autorizarOperacion("ESTADOEDITAR")) {
+                        $codigo = "ESTADOEDITAR";
+                        $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                    } else {
+                        $estado = new Estado();
+                        $estado->obtenerPorId($id);
+       
+                        return view('estado.estado-nuevo', compact('estado', 'titulo', 'array_menu', 'array_menu_grupo'));
+                    }
+                } else {
+                    return redirect('admin/login');
+                }
+
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("ESTADOELIMINAR")) {
+                    if (Patente::autorizarOperacion("ESTADOBAJA")) {
         
                         $entidad = new Estado();
                         $entidad->cargarDesdeRequest($request);
@@ -129,7 +147,7 @@ class ControladorEstado extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "ESTADOELIMINAR";
+                        $codigo = "ESTADOBAJA";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);

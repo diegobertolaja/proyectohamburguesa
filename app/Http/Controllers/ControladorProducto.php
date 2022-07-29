@@ -16,8 +16,8 @@ class ControladorProducto extends Controller
     {
         $titulo = "Nuevo Producto";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("PRODUCTOCONSULTA")) {
-                $codigo = "PRODUCTOCONSULTA";
+            if (!Patente::autorizarOperacion("PRODUCTOALTA")) {
+                $codigo = "PRODUCTOALTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -138,6 +138,24 @@ class ControladorProducto extends Controller
                 return view('producto.producto-nuevo', compact('msg', 'producto', 'titulo')) . '?id=' . $producto->idproducto;
         
             }         
+
+            public function editar($id)
+            {
+                $titulo = "Modificar Producto";
+                if (Usuario::autenticado() == true) {
+                    if (!Patente::autorizarOperacion("PRODUCTOEDITAR")) {
+                        $codigo = "PRODUCTOEDITAR";
+                        $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                    } else {
+                        $producto = new Producto();
+                        $producto->obtenerPorId($id);
+       
+                        return view('producto.producto-nuevo', compact('producto', 'titulo', 'array_menu', 'array_menu_grupo'));
+                    }
+                } else {
+                    return redirect('admin/login');
+                }
             
             public function eliminar(Request $request) {
                 $id = $request->input('id');

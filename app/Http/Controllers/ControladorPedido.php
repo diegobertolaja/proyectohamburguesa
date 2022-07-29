@@ -124,12 +124,31 @@ class ControladorPedido extends Controller
                 return view('pedido.pedido-nuevo', compact('msg', 'pedido', 'titulo')) . '?id=' . $pedido->idpedido;
         
             }      
+
+
+            public function editar($id)
+            {
+                $titulo = "Modificar Pedido";
+                if (Usuario::autenticado() == true) {
+                    if (!Patente::autorizarOperacion("PEDIDOEDITAR")) {
+                        $codigo = "PEDIDOEDITAR";
+                        $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                    } else {
+                        $pedido = new Pedido();
+                        $pedido->obtenerPorId($id);
+       
+                        return view('pedido.pedido-nuevo', compact('pedido', 'titulo', 'array_menu', 'array_menu_grupo'));
+                    }
+                } else {
+                    return redirect('admin/login');
+                }
             
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("PEDIDOELIMINAR")) {
+                    if (Patente::autorizarOperacion("PEDIDOBAJA")) {
         
                         $entidad = new Pedido();
                         $entidad->cargarDesdeRequest($request);
@@ -137,7 +156,7 @@ class ControladorPedido extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "PEDIDOELIMINAR";
+                        $codigo = "PEDIDOBAJA";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);

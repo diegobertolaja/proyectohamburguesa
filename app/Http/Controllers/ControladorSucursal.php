@@ -17,8 +17,8 @@ class ControladorSucursal extends Controller
     {
         $titulo = "Nueva Sucursal";
         if (Usuario::autenticado() == true) {
-            if (!Patente::autorizarOperacion("SUCURSALCONSULTA")) {
-                $codigo = "SUCURSALCONSULTA";
+            if (!Patente::autorizarOperacion("SUCURSALALTA")) {
+                $codigo = "SUCURSALALTA";
                 $mensaje = "No tiene permisos para la operaci&oacute;n.";
                 return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
             } else {
@@ -120,11 +120,29 @@ class ControladorSucursal extends Controller
         
             }      
             
+            public function editar($id)
+            {
+                $titulo = "Modificar Sucursal";
+                if (Usuario::autenticado() == true) {
+                    if (!Patente::autorizarOperacion("SUCURSALEDITAR")) {
+                        $codigo = "SUCURSALEDITAR";
+                        $mensaje = "No tiene pemisos para la operaci&oacute;n.";
+                        return view('sistema.pagina-error', compact('titulo', 'codigo', 'mensaje'));
+                    } else {
+                        $sucursal= new Sucursal();
+                        $sucursal->obtenerPorId($id);
+       
+                        return view('sucursal.sucursal-nuevo', compact('sucursal', 'titulo', 'array_menu', 'array_menu_grupo'));
+                    }
+                } else {
+                    return redirect('admin/login');
+                }
+            
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
-                    if (Patente::autorizarOperacion("SUCURSALELIMINAR")) {
+                    if (Patente::autorizarOperacion("SUCURSALBAJA")) {
         
                         $entidad = new Sucursal();
                         $entidad->cargarDesdeRequest($request);
@@ -132,7 +150,7 @@ class ControladorSucursal extends Controller
         
                         $aResultado["err"] = EXIT_SUCCESS; //eliminado correctamente
                     } else {
-                        $codigo = "SUCURSALELIMINAR";
+                        $codigo = "SUCURSALBAJA";
                         $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
                     }
                     echo json_encode($aResultado);
