@@ -80,10 +80,52 @@
           </div>
         </div>
       </div>
+    </div>  
+</section>
+<!-- end client section -->
+
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          ¡Trabaja con nosotros!
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form_container">
+            <form action="" enctype="multipart/form-data">
+              <div>
+                <input type="text" class="form-control" placeholder="Nombre y apellido" name="txtNombre"/>
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Teléfono" name="txtTelefono"/>
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Mail" name="txtMail"/>
+              </div>
+              <div>
+                <label for="txtMensaje">Mensaje:</label>
+                <textarea name="txtMensaje" id="txtMensaje" cols="30" rows="10"></textarea>
+              </div>
+              <div>
+                <input type="file" name="archivo" id="archivo">
+              </div>
+                <div class="btn_box">
+                <button type="submit">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+       </div>
+      </div>
     </div>
   </section>
 
-  <!-- end client section -->
-  @endsection
+  
+  
+@endsection
 
  

@@ -6,7 +6,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Pedí ahora
+          Dejanos tu mensaje
         </h2>
       </div>
       <div class="row">
@@ -14,20 +14,17 @@
           <div class="form_container">
             <form action="">
               <div>
-                <input type="text" class="form-control" placeholder="Nombre y apellido" />
+                <input type="text" class="form-control" placeholder="Nombre y apellido" name="txtNombre"/>
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Teléfono" />
+                <input type="text" class="form-control" placeholder="Teléfono" name="txtTelefono"/>
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Mail" />
+                <input type="email" class="form-control" placeholder="Mail" name="txtMail"/>
               </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
+             <div class="btn_box">
                 <button>
-                  Reservá ahora
+                  Contacto
                 </button>
               </div>
             </form>
