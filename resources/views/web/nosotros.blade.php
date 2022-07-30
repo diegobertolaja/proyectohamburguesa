@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.png" alt="">
+            <img src="web/images/about-img.png" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -33,7 +33,7 @@
 
    <!-- client section -->
 
-   <section class="client_section layout_padding-bottom">
+   <section class="client_section pt-5">
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
@@ -84,9 +84,9 @@
 </section>
 <!-- end client section -->
 
-<section class="book_section layout_padding">
+<section class="book_section layout_padding-bottom">
     <div class="container">
-      <div class="heading_container">
+      <div class="heading_container text-center">
         <h2>
           ¡Trabaja con nosotros!
         </h2>
@@ -109,9 +109,10 @@
                 <textarea name="txtMensaje" id="txtMensaje" cols="30" rows="10"></textarea>
               </div>
               <div>
+                <label for="archivo" class="d-block">Adjunta tu CV:</label>
                 <input type="file" name="archivo" id="archivo">
               </div>
-                <div class="btn_box">
+                <div class="btn_box text-center">
                 <button type="submit">
                   Enviar
                 </button>
