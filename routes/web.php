@@ -92,7 +92,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/sistema/menu/{id}', 'ControladorMenu@editar');
     Route::post('/admin/sistema/menu/{id}', 'ControladorMenu@guardar');
 
-});
+
 
 /* --------------------------------------------- */
 /* CONTROLADOR PATENTES                          */
@@ -191,5 +191,5 @@ Route::get('/admin/sucursal/{id}', 'ControladorSucursal@editar');
 Route::post('/admin/sucursal/{id}', 'ControladorSucursal@guardar');
 
 
-
+});
 
