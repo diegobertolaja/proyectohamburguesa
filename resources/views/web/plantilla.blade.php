@@ -36,9 +36,11 @@
 <body>
 
   <div class="hero_area">
+    @if(isset($pg) && $pg=="home")
     <div class="bg-box">
       <img src="web/images/hero-bg.jpg" alt="">
     </div>
+    @endif
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">

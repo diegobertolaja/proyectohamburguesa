@@ -79,7 +79,8 @@ class ControladorSucursal extends Controller
         return json_encode($json_data);
     }            
 
-    public function guardar(Request $request) {
+    public function guardar(Request $request) 
+    {
                 try {
                     //Define la entidad servicio
                     $titulo = "Modificar sucursal";
@@ -141,7 +142,8 @@ class ControladorSucursal extends Controller
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
-                if (Usuario::autenticado() == true) {
+                if (Usuario::autenticado() == true) 
+                {
                     if (Patente::autorizarOperacion("SUCURSALBAJA")) {
         
                         $entidad = new Sucursal();
@@ -159,3 +161,4 @@ class ControladorSucursal extends Controller
                 }
 
       }
+    }

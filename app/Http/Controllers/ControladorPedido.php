@@ -14,9 +14,7 @@ require app_path() . '/start/constants.php';
 
 class ControladorPedido extends Controller
 {
-    
-    
-    
+        
     public function nuevo()
     {
         $titulo = "Nuevo Pedido";
@@ -164,3 +162,4 @@ class ControladorPedido extends Controller
                     return redirect('admin/login');
                 }
       }
+    }

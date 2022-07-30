@@ -161,3 +161,4 @@ class ControladorPostulacion extends Controller
                 }
 
       }
+    }

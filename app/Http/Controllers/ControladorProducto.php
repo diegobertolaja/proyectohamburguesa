@@ -79,7 +79,8 @@ class ControladorProducto extends Controller
                 return json_encode($json_data);
             }           
 
-            public function guardar(Request $request) {
+            public function guardar(Request $request) 
+            {
                 try {
                     //Define la entidad servicio
                     $titulo = "Modificar producto";
@@ -157,7 +158,8 @@ class ControladorProducto extends Controller
                     return redirect('admin/login');
                 }
             
-            public function eliminar(Request $request) {
+            public function eliminar(Request $request) 
+            {
                 $id = $request->input('id');
         
                 if (Usuario::autenticado() == true) {
