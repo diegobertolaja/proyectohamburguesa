@@ -154,25 +154,25 @@
         <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4>
-              Contact Us
+              Contacto
             </h4>
             <div class="contact_link_box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Ubicación
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Teléfono +01 1234567890
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  hamburguejas@gmail.com
                 </span>
               </a>
             </div>
@@ -207,13 +207,13 @@
         </div>
         <div class="col-md-4 footer-col">
           <h4>
-            Opening Hours
+            Horario
           </h4>
           <p>
-            Everyday
+            Todos los días
           </p>
           <p>
-            10.00 Am -10.00 Pm
+            11.00 Am -11.00 Pm
           </p>
         </div>
       </div>
