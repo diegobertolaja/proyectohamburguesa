@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entidades\Sistema\Patente;
 use App\Entidades\Sistema\Usuario;
+use App\Entidades\Sucursal;
 use Session;
 
 class ControladorWebHome extends Controller
