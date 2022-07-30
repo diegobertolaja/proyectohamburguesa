@@ -1,3 +1,5 @@
+@extends('web.plantilla')
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,7 +137,7 @@
                 </button>
               </form>
               <a href="" class="order_online">
-                Order Online
+                Hace tu pedido
               </a>
             </div>
           </div>
@@ -151,16 +153,16 @@
   <footer class="footer_section">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 footer-col">
+        <div class="col-3 footer-col">
           <div class="footer_contact">
             <h4>
-              Contacto
+              Haedo
             </h4>
             <div class="contact_link_box">
-              <a href="">
+              <a target="_blank" href="https://goo.gl/maps/DHucWcDVJFCowCk3A">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Ubicación
+                  Dirección: Cazadores 205
                 </span>
               </a>
               <a href="">
@@ -169,6 +171,58 @@
                   Teléfono +01 1234567890
                 </span>
               </a>
+              <div class="footer_contact">
+            <h4>
+              San Antonio de Padua
+            </h4>
+            <div class="contact_link_box">
+              <a target="_blank" href="https://g.page/FinisterreSocialClub?share">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Dirección: Volta 363
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Teléfono +01 1234567890
+                </span>
+              </a>
+              <div class="footer_contact">
+            <h4>
+              Morón
+            </h4>
+            <div class="contact_link_box">
+              <a target="_blank" href="https://goo.gl/maps/Da31gUcFpBTssE3M8">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Dirección: 9 de julio 56
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Teléfono +01 1234567890
+                </span>
+              </a>
+              <div class="footer_contact">
+            <h4>
+              Ramos Mejía
+            </h4>
+            <div class="contact_link_box">
+              <a target="_blank" href="https://g.page/containerbarok?share">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Dirección: Necochea 955
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Teléfono +01 1234567890
+                </span>
+              </a>
+              
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
