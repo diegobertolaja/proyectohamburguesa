@@ -1,5 +1,3 @@
-@extends('web.plantilla')
-
 <!DOCTYPE html>
 <html>
 <head>
