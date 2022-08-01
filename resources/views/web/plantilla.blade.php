@@ -156,125 +156,32 @@
         <div class="col-12">
           <h5>Sucursales</h5>
         </div>
+        @foreach ($aSucursales as $sucursal)
         <div class="col-3 footer-col">
           <div class="footer_contact">
             <h4>
-              Haedo
+              {{ $sucursal->nombre }}
             </h4>
             <div class="contact_link_box">
-              <a target="_blank" href="https://goo.gl/maps/DHucWcDVJFCowCk3A">
+              <a target="_blank" href="{{ $sucursal->linkmapa }}">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Dirección: Cazadores 205
+                Dirección {{ $sucursal->direccion }}
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Teléfono +01 1234567890
+                Teléfono {{ $sucursal->telefono }}
                 </span>
               </a>
-              <div class="footer_contact">
-            <h4>
-              San Antonio de Padua
-            </h4>
-            <div class="contact_link_box">
-              <a target="_blank" href="https://g.page/FinisterreSocialClub?share">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Dirección: Volta 363
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Teléfono +01 1234567890
-                </span>
-              </a>
-              <div class="footer_contact">
-            <h4>
-              Morón
-            </h4>
-            <div class="contact_link_box">
-              <a target="_blank" href="https://goo.gl/maps/Da31gUcFpBTssE3M8">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Dirección: 9 de julio 56
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Teléfono +01 1234567890
-                </span>
-              </a>
-              <div class="footer_contact">
-            <h4>
-              Ramos Mejía
-            </h4>
-            <div class="contact_link_box">
-              <a target="_blank" href="https://g.page/containerbarok?share">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Dirección: Necochea 955
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Teléfono +01 1234567890
-                </span>
-              </a>
-              
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  hamburguejas@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              Hamburguejas
-            </a>
-            <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
-            </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Horario
-          </h4>
-          <p>
-            Todos los días
-          </p>
-          <p>
-            11.00 Am -11.00 Pm
-          </p>
-        </div>
-      </div>
-      <div class="footer-info">
+              </div>
+              </div>
+              </div>
+              @endforeach
+              </div>
+                           
+  <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
           <a href="https://html.design/">Free Html Templates</a><br><br>
