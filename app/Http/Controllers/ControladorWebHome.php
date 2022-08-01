@@ -11,7 +11,7 @@ class ControladorWebHome extends Controller
 {
     public function index()
     {
-            $pg = "home";
+            $pg = "inicio";
             return view("web.inicio", compact('pg'));
     }
 }
