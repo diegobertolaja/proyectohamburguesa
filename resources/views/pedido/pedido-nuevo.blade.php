@@ -9,7 +9,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/admin/home">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/admin/sistema/pedidos">Pedidos</a></li>
+    <li class="breadcrumb-item"><a href="/admin/pedidos">Pedidos</a></li>
     <li class="breadcrumb-item active">Modificar</li>
 </ol>
 <ol class="toolbar">
@@ -41,15 +41,10 @@ if (isset($msg)) {
     echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
 }
 ?>
-            <form id="form1" method="POST">
+            <form id="form1" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-                <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
-                <div class="form-group col-lg-6">
-                <label>Fecha: *</label>
-                    <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="{{ $pedido->fecha }}" required>
-                </div>
-                <div class="form-group col-lg-6">
+                <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required> <div class="form-group col-lg-6">
                 <label>Cliente: *</label>
                     <select name="lstCliente" id="lstCliente" class="form-control">
                     <option disabled selected>Seleccionar</option>
@@ -57,6 +52,11 @@ if (isset($msg)) {
                             <option value="{{ $item->idcliente}}"> {{ $item->nombre}} {{ $item->apellido}}</option>
                         @endforeach
                 </div>
+                <div class="form-group col-lg-6">
+                <label>Fecha: *</label>
+                    <input type="date" id="txtFecha" name="txtFecha" class="form-control" value="{{ $pedido->fecha }}" required>
+                </div>
+               
                 <div class="form-group col-lg-6">
                 <label>Sucursal: *</label>
                     <select name="lstSucursal" id="lstSucursal" class="form-control">
