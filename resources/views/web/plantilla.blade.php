@@ -153,6 +153,9 @@
   <footer class="footer_section">
     <div class="container">
       <div class="row">
+        <div class="col-12">
+          <h5>Sucursales</h5>
+        </div>
         <div class="col-3 footer-col">
           <div class="footer_contact">
             <h4>
@@ -235,7 +238,7 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Hamburguejas
             </a>
             <p>
               Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
