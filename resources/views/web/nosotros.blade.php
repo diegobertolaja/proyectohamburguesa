@@ -18,7 +18,7 @@
               </h2>
             </div>
             <p>
-              Variedad de hamburguesas a base plantas y legumbres, papas fritas y pizzas sin harina
+              Variedad de hamburguesas a base plantas y legumbres, papas fritas y pizzas sin harinas ni sufrimiento animal
             </p>
             <a href="">
               Lee más
@@ -56,7 +56,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="images/client1.jpg" alt="" class="box-img">
+                <img src="web/images/client1.jpg" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="images/client2.jpg" alt="" class="box-img">
+                <img src="web/images/client2.jpg" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -95,6 +95,7 @@
         <div class="col-md-12">
           <div class="form_container">
             <form action="" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
               <div>
                 <input type="text" class="form-control" placeholder="Nombre y apellido" name="txtNombre"/>
               </div>
