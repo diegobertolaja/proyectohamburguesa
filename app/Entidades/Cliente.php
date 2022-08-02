@@ -140,6 +140,24 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
+    public function obtenerPorCorreo($correo)
+    {
+        $sql = "SELECT
+                idcliente,
+                mail,
+                clave
+        FROM clientes WHERE correo = '$correo'";
+        $lstRetorno = DB::select($sql);
+
+        if (count($lstRetorno) > 0) {
+            $this->idcliente = $lstRetorno[0]->idcliente;
+            $this->mail = $lstRetorno[0]->mail;
+            $this->calve = $lstRetorno[0]->clave;
+            return $this;
+            }
+            return null;
+        }
+
 
 }
 
