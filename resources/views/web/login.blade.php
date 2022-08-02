@@ -5,7 +5,7 @@
 <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
-        <h2 class="pb-4">
+        <h2 class="pb-4 text-white" >
           Ingreso / Registro
         </h2>
       </div>
@@ -13,9 +13,11 @@
         <div class="col-md-6">
           <div class="form_container">
             <form action="" method="POST">
-              <div class="alert alert-secondary" role="alert">
+              @if(isset ($msg))
+              <div class="alert alert-danger" role="alert">
                 {{$msg}}
               </div>
+              @endif
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
               <div>
                 <input id="txtMail" name="txtMail" type="email" class="form-control" placeholder="Mail" />
