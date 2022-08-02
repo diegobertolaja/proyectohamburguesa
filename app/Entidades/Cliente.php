@@ -146,8 +146,8 @@ class Cliente extends Model
                 idcliente,
                 mail,
                 clave
-        FROM clientes WHERE correo = '$correo'";
-        $lstRetorno = DB::select($sql);
+        FROM clientes WHERE correo = ?";
+        $lstRetorno = DB::select($sql, ($correo));
 
         if (count($lstRetorno) > 0) {
             $this->idcliente = $lstRetorno[0]->idcliente;

@@ -26,6 +26,9 @@
             <div class="mt-4">
               <a href="/nuevo-registro">Registrarme</a>    
             </div> 
+            <div class="mt-4">
+              <a href="/recuperar-clave">Recuperar clave</a>    
+            </div> 
              </form>
           </div>
         </div>
