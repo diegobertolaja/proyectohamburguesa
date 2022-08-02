@@ -13,6 +13,9 @@
         <div class="col-md-6">
           <div class="form_container">
             <form action="" method="POST">
+              <div class="alert alert-secondary" role="alert">
+                {{$msg}}
+              </div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
               <div>
                 <input id="txtMail" name="txtMail" type="email" class="form-control" placeholder="Mail" />
