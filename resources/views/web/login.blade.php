@@ -5,7 +5,7 @@
 <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
-        <h2 class="pb-4 text-white" >
+        <h2 class="pb-4" >
           Ingreso / Registro
         </h2>
       </div>
