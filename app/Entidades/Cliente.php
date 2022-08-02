@@ -100,6 +100,7 @@ class Cliente extends Model
             mail=$this->mail,
             dni='$this->dni',
             telefono='$this->telefono'
+            clave='$this->clave'
             WHERE idcliente=?";
         $affected = DB::update($sql, [$this->idcliente]);
     }
