@@ -31,7 +31,7 @@ class Cliente extends Model
         $this->mail = $request->input('txtMail');
         $this->dni = $request->input('txtDni');
         $this->Telefono = $request->input('txtTelefono');
-        $this->clave = $request->input('txtClave');
+        $this->clave = password_hash ($request->input('txtClave'), PASSWORD_DEFAULT);
     }
 
     public function insertar()

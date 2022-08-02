@@ -61,7 +61,7 @@ class ControladorCliente extends Controller
         
                 for ($i = $inicio; $i < count($aClientes) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = "<a href='/admin/cliente/".$aClientes[$i]->idcliente.'" class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+                    $row[] = "<a href='/admin/cliente/" . $aClientes[$i]->idcliente.'" class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
                     $row[] = $aClientes[$i]->nombre . "" . $aClientes[$i]->apellido;
                     $row[] = $aClientes[$i]->mail;
                     $row[] = $aClientes[$i]->dni;
@@ -79,7 +79,8 @@ class ControladorCliente extends Controller
                 return json_encode($json_data);
             }                  
          
-    public function guardar(Request $request) {
+    public function guardar(Request $request) 
+    {
             try {
                 //Define la entidad servicio
                 $titulo = "Modificar cliente";
@@ -106,7 +107,7 @@ class ControladorCliente extends Controller
                     }
                   
                     $_POST["id"] = $entidad->idcliente;
-                    return view('sistema.menu-listar', compact('titulo', 'msg'));
+                    return view('cliente.cliente-listar', compact('titulo', 'msg'));
                 }
             } catch (Exception $e) {
                 $msg["ESTADO"] = MSG_ERROR;
