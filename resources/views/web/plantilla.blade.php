@@ -1,7 +1,6 @@
-@extends('web.plantilla')
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -14,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Feane </title>
+  <title> Hamburguejas </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -25,29 +24,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
+ 
 
   <!-- Custom styles for this template -->
   <link href="web/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="web/css/responsive.css" rel="stylesheet" />
+ 
 
 </head>
+@if(isset($pg) && $pg=="inicio")
 
 <body>
+  @else
+  <body class="sub_page"> 
+  @endif
 
-  <div class="hero_area">
-    @if(isset($pg) && $pg=="home")
+    <div class="hero_area">
+
     <div class="bg-box">
       <img src="web/images/hero-bg.jpg" alt="">
     </div>
-    @endif
+
+
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Feane
+              Hamburguejas
             </span>
           </a>
 
@@ -179,9 +185,9 @@
               </div>
               </div>
               @endforeach
-              </div>
-                           
-     </div>
+              
+        </div>
+      </div>
   </footer>
   <!-- footer section -->
 
@@ -201,10 +207,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <!-- custom js -->
   <script src="web/js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
 
 </body>
 
