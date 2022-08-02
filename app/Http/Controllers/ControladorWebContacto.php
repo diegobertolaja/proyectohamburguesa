@@ -10,7 +10,7 @@ class ControladorWebContacto extends Controller
     {
         $sucursal = New Sucursal();
         $aSucursales = $sucursal-> obtenerTodos();     
-        return view("web.contacto", compact('pg', '$aSucursales'));
+        return view("web.contacto", compact('aSucursales'));
     }
 
     public function enviar(Request $request) {
