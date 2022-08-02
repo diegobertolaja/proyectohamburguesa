@@ -22,10 +22,13 @@ class ControladorWebLogin extends Controller
         $clave = $request->input('txtClave');
 
         $cliente = New Cliente();
-        $cliente->clave = $clave;
-        $cliente->insertar();
-
-        return redirect("/login");
+        $cliente->obtenerPorCorreo($correo);
+        if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave));
+          return redirect("/mi-cuenta");
+        }   else {
+            $msg = "Usuario o clave incorrecta";
+            return redirect("/login", compact('msg'));
+        
 
     }
 }
