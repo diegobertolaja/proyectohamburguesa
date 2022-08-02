@@ -1,25 +1,25 @@
 @extends('web.plantilla')
 @section ('contenido')
-  <!-- food section -->
-
-  <section class="food_section layout_padding-bottom">
+ 
+  <section class="food_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Nuestro Menu
+          Takeaway
         </h2>
       </div>
 
       <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".burger">Burger</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Pasta</li>
-        <li data-filter=".papas-fritas">Papas fritas</li>
+        <li class="active" data-filter="*">Todos</li>
+      @foreach($aCategorias as $item)
+        <li data-filter=".{{ $item->nombre }}"> {{ $item->nombre }} </li>
+      @endforeach
+
       </ul>
 
-
-
+   <div class="filter-content">
+    <div class="row grid">
+ 
       @foreach($aProductos as $item)
         @foreach($aCategorias as $itemCategoria)   
           if($item->fk_idcategoria == $itemCategoria->idcategoria) 
@@ -105,8 +105,7 @@
               </div>
             </div>
           </div>
+         
         
-
-  <!-- end food section -->
 @endsection
   

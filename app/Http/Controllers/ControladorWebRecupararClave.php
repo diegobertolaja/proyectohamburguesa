@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
+use Illuminate\Http\Request;
 
 class ControladorWebRecuperarClave extends Controller
 {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Entidades\Producto;
 use App\Entidades\Categoria;
 use App\Entidades\Sucursal;
+use Illuminate\Http\Request;
 
 class ControladorWebTakeaway extends Controller
 {
