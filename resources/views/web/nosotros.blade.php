@@ -94,7 +94,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form_container">
-            <form action="" enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
               <div>
                 <input type="text" class="form-control" placeholder="Nombre y apellido" name="txtNombre"/>
