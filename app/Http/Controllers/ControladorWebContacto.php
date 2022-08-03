@@ -35,12 +35,15 @@ class ControladorWebContacto extends Controller
     $mail->Port = env ('MAIL_PORT');
 
     $mail->sentFrom(env('MAIL_FROM_ADRESS'), env('MAIL_FROM_NAME'));
-    $mail->addAdress($mail);
+    $mail->addAdress(env('MAIL_FROM_ADRESS'));
     $mail->addReplyTo(env('MAIL_FROM_ADRESS'));
     
     $mail->isHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body = $body;
+    $mail->Subject = "Contacto desde la página web";
+    $mail->Body = "Nombre: $nombre <br>
+    Correo: $correo <br>
+    Telefono: $telefono <br>
+    Mensaje: <br>$mensaje";
     //$mail->send();
 
     return redirect("/confirmacion-envio");  
