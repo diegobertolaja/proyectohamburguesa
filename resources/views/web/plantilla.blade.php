@@ -142,9 +142,15 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Hace tu pedido
+            @if(Session::get("idcliente") > 0)  
+              <a href="/login" class="order_online">
+                Salir
               </a>
+            @else
+              <a href="/login" class="order_online">
+                Ingresar
+              </a> 
+              @endif 
             </div>
           </div>
         </nav>
