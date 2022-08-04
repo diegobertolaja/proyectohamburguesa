@@ -92,8 +92,8 @@ class ControladorPostulacion extends Controller
                     if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
                         $extension = pathinfo($_FILES ["archivo"]["name"], PATHINFO_EXTENSION);
                         $nombre = date("Ymdhmsi") . ".$extension";
-                        $archivo = $_FILES["archivo"]["tmp_name"];
-                        move_uploaded_file($archivo, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+                        $archivo_temp = $_FILES["archivo"]["tmp_name"];
+                        move_uploaded_file($archivo_temp, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
                         $entidad->curriculum = $nombre;
                     }
                 

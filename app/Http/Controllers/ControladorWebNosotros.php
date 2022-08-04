@@ -22,20 +22,28 @@ class ControladorWebNosotros extends Controller
         $telefono = $request->input('txtTelefono');
         $mail = $request->input('txtMail');
         $mensaje = $request->input('txtMensaje');
-
         $postulacion = New Postulacion();
+        $postulacion->curriculum = $nombre;
+
+        if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
+            $extension = pathinfo($_FILES ["archivo"]["name"], PATHINFO_EXTENSION);
+            $nombre = date("Ymdhmsi") . ".$extension";
+            $archivo_temp = $_FILES["archivo"]["tmp_name"];
+            move_uploaded_file($archivo_temp, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
+            $entidad->curriculum = $nombre;
+        }
+
+       
         $postulacion->nombre = $nombre;
-        $postulacion->apellido = $apellido;
+        $postulacion->apellido = "";
         $postulacion->telefono = $telefono;
         $postulacion->mail =  $mail;
         $postulacion->mensaje = $mensaje;
-        $postulacion->curriculum = $curriculum;
         $postulacion->insertar();
 
         return redirect("/gracias-postulacion");
-
-
-
     }
+
+   
 }
 
