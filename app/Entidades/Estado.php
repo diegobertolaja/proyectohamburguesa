@@ -46,8 +46,8 @@ class Estado extends Model
         $sql = "SELECT DISTINCT
                     A.idestado,
                     A.nombre,
-                    FROM sistema_menues A
-                    LEFT JOIN sistema_menues B ON A.id_padre = B.idestado
+                    FROM estados A
+                    LEFT JOIN sistema_menues B ON A.idestado = B.id_padre
                 WHERE 1=1
                 ";
 
@@ -67,21 +67,12 @@ class Estado extends Model
         $sql = "SELECT
                   A.idestado,
                   A.nombre
-                FROM sistema_menues A ORDER BY A.nombre";
+                FROM estados A ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
     }
 
-    public function obtenerMenuPadre()
-    {
-        $sql = "SELECT DISTINCT
-                  A.idestado,
-                  A.nombre
-                FROM sistema_menues A
-                WHERE A.id_padre = 0 OR A.id_padre IS NULL ORDER BY A.nombre";
-        $lstRetorno = DB::select($sql);
-        return $lstRetorno;
-    }
+    
 
 
     public function guardar() {
@@ -106,15 +97,7 @@ class Estado extends Model
       }
       return null;
   }
-
-  public function obtenerTodos()
-    {
-        $sql = "SELECT
-                  A.idestado,
-                  A.nombre
-                FROM estados A ORDER BY A.nombre";
-        $lstRetorno = DB::select($sql);
-        return $lstRetorno;
-    }
 }
+
+
 

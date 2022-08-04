@@ -28,6 +28,8 @@ class ControladorSucursal extends Controller
         } else {
             return redirect('admin/login');
         }
+    }
+
     
     public function index()
     {
@@ -61,7 +63,7 @@ class ControladorSucursal extends Controller
 
         for ($i = $inicio; $i < count($aSucursales) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = "<a href='/admin/sucursal/".$aSucursales[$i]->idsucursal."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = "<a href='/admin/sucursal/".$aSucursales[$i]->idsucursal." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
             $row[] = $aSucursales[$i]->direccion;
             $row[] = $aSucursales[$i]->telefono;
             $row[] = $aSucursales[$i]->linkmapa;
@@ -138,6 +140,7 @@ class ControladorSucursal extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
             
             public function eliminar(Request $request) {
                 $id = $request->input('id');

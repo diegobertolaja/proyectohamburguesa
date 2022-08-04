@@ -28,6 +28,7 @@ class ControladorPostulacion extends Controller
         } else {
             return redirect('admin/login');
         }
+    }
 
     
     public function index()
@@ -62,12 +63,12 @@ class ControladorPostulacion extends Controller
 
         for ($i = $inicio; $i < count($aPostulaciones) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = "<a href='/admin/postulacion/".$aPostulaciones[$i]->idpostulacion."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = "<a href='/admin/postulacion/".$aPostulaciones[$i]->idpostulacion." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
             $row[] = $aPostulaciones[$i]->nombre;
             $row[] = $aPostulaciones[$i]->apellido;
             $row[] = $aPostulaciones[$i]->telefono;
             $row[] = $aPostulaciones[$i]->mail;
-            $row[] = "<a href='/files/" . $aPostulaciones[$i]->curriculum . "' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = "<a href='/files/" . $aPostulaciones[$i]->curriculum . " class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
             $cont++;
             $data[] = $row;
         }
@@ -159,6 +160,7 @@ class ControladorPostulacion extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            
 
       }
     }
