@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Entidades;
-
-use DB;
 use illuminate\Database\Eloquent\Model; 
+use DB;
+
 
 class Pedido extends Model
 {
@@ -63,7 +63,8 @@ class Pedido extends Model
                     INNER JOIN estados D ON A.fk_idestado = B.idsucursal
 
                 WHERE 1=1
-                ";
+                ");
+    
 
         //Realiza el filtrado
         if (!empty($request['search']['value'])) {
