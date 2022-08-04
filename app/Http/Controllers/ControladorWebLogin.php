@@ -16,8 +16,8 @@ class ControladorWebLogin extends Controller
 
             return view("web.login", compact('pg', '$aSucursales'));
     }
-
-    public function ingresar (Request $request) {
+ 
+      public function ingresar (Request $request) {
       $sucursal = New Sucursal();
       $aSucursales = $sucursal-> obtenerTodos();
 
@@ -39,6 +39,7 @@ class ControladorWebLogin extends Controller
         $msg["estado"]= "danger";
         return view ("/web.login", compact('msg', '$aSucursales', 'pg'));    
     }
+ 
   }
 
 
