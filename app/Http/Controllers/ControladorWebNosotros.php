@@ -33,7 +33,7 @@ class ControladorWebNosotros extends Controller
         $postulacion->curriculum = $curriculum;
         $postulacion->insertar();
 
-        return redirect("/gracias-postulacion")
+        return redirect("/gracias-postulacion");
 
 
 
