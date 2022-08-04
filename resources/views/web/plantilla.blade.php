@@ -143,7 +143,7 @@
                 </button>
               </form>
             @if(Session::get("idcliente") > 0)  
-              <a href="/login" class="order_online">
+              <a href="/logout" class="order_online">
                 Salir
               </a>
             @else
