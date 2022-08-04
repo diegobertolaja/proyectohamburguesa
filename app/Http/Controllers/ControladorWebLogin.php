@@ -19,7 +19,7 @@ class ControladorWebLogin extends Controller
     }
   }
 
-    public function ingresar(Request $request) {
+    public function ingresar (Request $request) {
         $mail = $request->input('txtMail');
         $clave = $request->input('txtClave');
 
