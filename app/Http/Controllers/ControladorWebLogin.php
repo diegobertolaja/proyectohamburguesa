@@ -16,6 +16,7 @@ class ControladorWebLogin extends Controller
 
             return view("web.login", compact('pg', '$aSucursales'));
     }
+  }
 
     public function ingresar(Request $request) {
         $mail = $request->input('txtMail');
@@ -31,8 +32,8 @@ class ControladorWebLogin extends Controller
             $aSucursales = $sucursal-> obtenerTodos();
 
             return redirect("/web.login", compact('msg', '$aSucursales'));
-           
+
+        }    
         
 
-    }
-}
+    
