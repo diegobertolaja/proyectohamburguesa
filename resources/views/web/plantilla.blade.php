@@ -82,10 +82,9 @@
             </ul>
             <div class="user_option">
              @if(Session::get("idcliente") > 0)  
-              <a class="cart_link" href="/carrito">
+              <a class="cart_link" href="/carrito"><i class="fa-solid fa-cart-plus"></i></a>
                 Carrito
-                </a>
-              @endif
+                @endif
               @if(Session::get("idcliente") > 0)  
               <a href="/logout" class="order_online">
                 Salir
