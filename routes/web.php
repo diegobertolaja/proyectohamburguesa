@@ -22,7 +22,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/gracias-postulacion', 'ControladorWebGraciasPostulacion@index');
     Route::post('/nosotros', 'ControladorWebNosotros@enviar');
     Route::get('/contacto', 'ControladorWebContacto@index');
-    Route::get('/confirmacion-envio, 'ControladorWebConfirmacionEnvio@index');
+    Route::get('/confirmacion-envio', 'ControladorWebConfirmacionEnvio@index');
     Route::post('/contacto', 'ControladorWebContacto@enviar');
     Route::get('/mi-cuenta', 'ControladorWebMiCuenta@index');
     Route::get('/login', 'ControladorWebLogin@index');

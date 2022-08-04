@@ -28,6 +28,8 @@ class ControladorCliente extends Controller
             } else {
                 return redirect('admin/login');
             }
+        }
+            
             
             public function index()
             {
@@ -61,8 +63,9 @@ class ControladorCliente extends Controller
         
                 for ($i = $inicio; $i < count($aClientes) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = "<a href='/admin/cliente/" . $aClientes[$i]->idcliente.'" class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
-                    $row[] = $aClientes[$i]->nombre . "" . $aClientes[$i]->apellido;
+                    $row[] = "<a href='/admin/cliente/" . $aClientes[$i]->idcliente." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
+                    $row[] = $aClientes[$i]->nombre;
+                    $row[] = $aClientes[$i]->apellido;
                     $row[] = $aClientes[$i]->mail;
                     $row[] = $aClientes[$i]->dni;
                     $row[] = $aClientes[$i]->telefono;
