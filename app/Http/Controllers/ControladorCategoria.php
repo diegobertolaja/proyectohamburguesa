@@ -29,6 +29,7 @@ class ControladorCategoria extends Controller
             } else {
                 return redirect('admin/login');
             }
+        }
 
     public function index()
     {
@@ -62,7 +63,7 @@ class ControladorCategoria extends Controller
 
         for ($i = $inicio; $i < count($aClientes) && $cont < $registros_por_pagina; $i++) {
             $row = array();
-            $row[] = "<a href='/admin/categoria/".$aCategorias[$i]->idcategoria."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+            $row[] = "<a href='/admin/categoria/".$aCategorias[$i]->idcategoria." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
             $row[] = $aCategorias[$i]->nombre;
             $cont++;
             $data[] = $row;
@@ -136,6 +137,8 @@ class ControladorCategoria extends Controller
                     return redirect('admin/login');
                 }
             
+            }
+
             public function eliminar(Request $request) {
                 $id = $request->input('id');
         
@@ -155,5 +158,7 @@ class ControladorCategoria extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
 
-      }
+        }
+    

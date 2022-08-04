@@ -29,6 +29,7 @@ class ControladorEstado extends Controller
             } else {
                 return redirect('admin/login');
             }
+        }
 
     public function index()
     {
@@ -62,7 +63,7 @@ class ControladorEstado extends Controller
         
                 for ($i = $inicio; $i < count($aEstados) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = "<a href='/admin/estado/".$aEstados[$i]->idestado."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+                    $row[] = "<a href='/admin/estado/".$aEstados[$i]->idestado." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
                     $row[] = $aEstados[$i]->nombre;
                     $data[] = $row;
                 }
@@ -134,6 +135,7 @@ class ControladorEstado extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
 
             public function eliminar(Request $request) {
                 $id = $request->input('id');
@@ -154,6 +156,7 @@ class ControladorEstado extends Controller
                 } else {
                     return redirect('admin/login');
                 }
-        }                    
+        }
+    }                    
 
       
