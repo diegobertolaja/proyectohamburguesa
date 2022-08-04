@@ -20,9 +20,8 @@ class ControladorWebContacto extends Controller
         $mail = $request->input('txtMail');
         $mensaje = $request->input('txtMensaje');
 
-        return redirect("/confirmacion-envio");         
-        
-    }
+        return redirect("/confirmacion-envio");   
+           
 
     $mail = New PHPMailer(true);
     $mail->SMTPDebug = 0;
@@ -30,7 +29,7 @@ class ControladorWebContacto extends Controller
     $mail->Host = env ('MAIL_HOST');
     $mail->SMTPAuth = tue;
     $mail->Username = env ('MAIL_USERNAME');
-    $mail-Password = env ('MAIL_PASSWORD');
+    $mail->Password = env ('MAIL_PASSWORD');
     $mail->SMTPSecure = env ('MAIL_ENCRYPTION');
     $mail->Port = env ('MAIL_PORT');
 
@@ -47,5 +46,5 @@ class ControladorWebContacto extends Controller
     //$mail->send();
 
     return redirect("/confirmacion-envio");  
-
+}
 }
