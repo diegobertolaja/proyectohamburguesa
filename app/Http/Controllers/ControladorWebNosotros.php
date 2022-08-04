@@ -29,6 +29,7 @@ class ControladorWebNosotros extends Controller
             $extension = pathinfo($_FILES ["archivo"]["name"], PATHINFO_EXTENSION);
             $nombreRandom = date("Ymdhmsi") . ".$extension";
             $archivo_temp = $_FILES["archivo"]["tmp_name"];
+            if ($extension == "pfd" || $extension == "doc" || $extension == "docx") {;
             move_uploaded_file($archivo_temp, env('APP_PATH') . "/public/files/$nombreRandom"); //guardaelarchivo
             $postulacion->curriculum = $nombreRandom;
         }
