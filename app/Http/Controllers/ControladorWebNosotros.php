@@ -27,8 +27,8 @@ class ControladorWebNosotros extends Controller
         $postulacion = New Postulacion();
         $postulacion->nombre = $nombre;
         $postulacion->apellido = $apellido;
-        $postulacion$->telefono = $telefono;
-        $postulacion$->mail =  $mail;
+        $postulacion->telefono = $telefono;
+        $postulacion->mail =  $mail;
         $postulacion->mensaje = $mensaje;
         $postulacion->curriculum = $curriculum;
         $postulacion->insertar();

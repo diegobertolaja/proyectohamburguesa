@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
-use Illuminate\Http\Request;
 use Entidades\Cliente;
+use Illuminate\Http\Request;
+
 
 class ControladorWebLogin extends Controller
 {
