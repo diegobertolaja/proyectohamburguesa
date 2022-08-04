@@ -9,8 +9,7 @@ class ControladorWebNosotros extends Controller
 {
     public function index()
     {
-        $pg = "nosotros";
-            
+                 
         $sucursal = New Sucursal();
         $aSucursales = $sucursal-> obtenerTodos();    
         
