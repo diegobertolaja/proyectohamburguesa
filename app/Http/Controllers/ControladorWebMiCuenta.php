@@ -23,4 +23,8 @@ class ControladorWebMiCuenta extends Controller
         
         return view("web.mi-cuenta", compact('pg', '$aSucursales', 'cliente'));
     }
+
+    public function editar(Request $request){
+    return view("web.cambiar-datos");
+}
 }
