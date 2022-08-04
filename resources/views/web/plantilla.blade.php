@@ -79,9 +79,11 @@
               </li>
             </ul>
             <div class="user_option">
-              <a class="cart_link" href="#">
+             @if(Session::get("idcliente") > 0)  
+              <a class="cart_link" href="/carrito">
                 Carrito
-                </a>  
+                </a>
+              @endif
               @if(Session::get("idcliente") > 0)  
               <a href="/logout" class="order_online">
                 Salir
