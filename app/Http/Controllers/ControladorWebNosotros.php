@@ -27,10 +27,10 @@ class ControladorWebNosotros extends Controller
 
         if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {//Se adjunta imagen
             $extension = pathinfo($_FILES ["archivo"]["name"], PATHINFO_EXTENSION);
-            $nombre = date("Ymdhmsi") . ".$extension";
+            $nombreRandom = date("Ymdhmsi") . ".$extension";
             $archivo_temp = $_FILES["archivo"]["tmp_name"];
-            move_uploaded_file($archivo_temp, env('APP_PATH') . "/public/files/$nombre"); //guardaelarchivo
-            $entidad->curriculum = $nombre;
+            move_uploaded_file($archivo_temp, env('APP_PATH') . "/public/files/$nombreRandom"); //guardaelarchivo
+            $postulacion->curriculum = $nombreRandom;
         }
 
        
