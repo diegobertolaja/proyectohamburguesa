@@ -18,6 +18,7 @@ class Carrito extends Model
     protected $hidden = [
 
     ];
+}
 
     public function insertar()
     {
@@ -31,6 +32,7 @@ class Carrito extends Model
         return $this->idcarrito = DB::getPdo()->lastInsertId();
     }
 
+
     public function guardar() {
       $sql = "UPDATE $this->table SET
           fk_idcliente='$this->fk_idclientee',
@@ -38,7 +40,8 @@ class Carrito extends Model
       $affected = DB::update($sql, [$this->idcarrito]);
   }
 
-  public function obtenerPorId($idmenu)
+
+  public function obtenerPorId($idcarrito) {
       $sql = "SELECT
               idcarrito,
               fk_idcliente
@@ -49,9 +52,11 @@ class Carrito extends Model
           $this->idcarrito = $lstRetorno[0]->idcarrito;
           $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
           return $this;
-      }
+          }
+
       return null;
   }
+ 
 
   public function obtenerTodos()
     {
@@ -64,3 +69,5 @@ class Carrito extends Model
     }
 
 }
+
+ 

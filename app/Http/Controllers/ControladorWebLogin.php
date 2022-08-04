@@ -34,7 +34,8 @@ class ControladorWebLogin extends Controller
 
             return redirect("/web.login", compact('msg', '$aSucursales'));
 
-        }    
+        } 
+      
         
 
     
