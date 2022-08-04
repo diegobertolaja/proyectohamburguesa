@@ -74,9 +74,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="/contacto">Contacto</a>
               </li>
+              @if(Session::get("idcliente") > 0)  
               <li class="nav-item">
                 <a class="nav-link" href="/mi-cuenta">Mi cuenta</a>
               </li>
+             @endif 
             </ul>
             <div class="user_option">
              @if(Session::get("idcliente") > 0)  
