@@ -29,8 +29,7 @@ class ControladorCliente extends Controller
                 return redirect('admin/login');
             }
         }
-            
-            
+                       
             public function index()
             {
                 $titulo = "Listado de clientes";
@@ -141,6 +140,7 @@ class ControladorCliente extends Controller
             } else {
                 return redirect('admin/login');
             }
+        }
 
             public function eliminar(Request $request) {
                 $id = $request->input('id');
@@ -163,3 +163,4 @@ class ControladorCliente extends Controller
                 }
 
       }
+    }

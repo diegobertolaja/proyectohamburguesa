@@ -63,11 +63,11 @@ class ControladorPedido extends Controller
         
                 for ($i = $inicio; $i < count($aPedidos) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = "<a href='/admin/pedido/".$aPedidos[$i]->idpedido."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
+                    $row[] = "<a href='/admin/pedido/".$aPedidos[$i]->idpedido." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
                     $row[] = date_format(date_create($aPedidos[$i]->fecha), "d/m/y");
                     $row[] = $aPedidos[$i]->descripcion;
                     $row[] = $aPedidos[$i]->total;
-                    $row[] = "<a href='/admin/cliente/".$aPedidos[$i]->fk_idcliente."'>".$aPedidos[$i]->cliente."</a>;
+                    $row[] = "<a href='/admin/cliente/".$aPedidos[$i]->fk_idcliente."'>".$aPedidos[$i]->cliente."</a>";
                     $cont++;
                     $data[] = $row;
                 }
@@ -141,6 +141,7 @@ class ControladorPedido extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
             
             public function eliminar(Request $request) {
                 $id = $request->input('id');
@@ -161,5 +162,6 @@ class ControladorPedido extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
       }
     }

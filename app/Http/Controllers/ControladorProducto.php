@@ -27,6 +27,7 @@ class ControladorProducto extends Controller
         } else {
             return redirect('admin/login');
         }
+    }
 
             public function index()
             {
@@ -49,7 +50,7 @@ class ControladorProducto extends Controller
                 $request = $_REQUEST;
         
                 $entidad = new Producto();
-                $aProducto = $entidad->obtenerFiltrado();
+                $aProductos = $entidad->obtenerFiltrado();
         
                 $data = array();
                 $cont = 0;
@@ -60,11 +61,11 @@ class ControladorProducto extends Controller
         
                 for ($i = $inicio; $i < count($aProductos) && $cont < $registros_por_pagina; $i++) {
                     $row = array();
-                    $row[] = "<a href='/admin/producto/".$aProductos[$i]->idproducto."' class='btn btn-secondary'><i class='fas fa-pencil'></i></a>;
-                    $row[] = $$aProductos[$i]->nombre;
-                    $row[] = $$aProductos[$i]->cantidad;
-                    $row[] = $ . number_format ($aProductos[$i]->precio, 2, ", ", ".");
-                    $row[] = $$aProductos[$i]->descripcion;
+                    $row[] = "<a href='/admin/producto/".$aProductos[$i]->idproducto." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
+                    $row[] = $aProductos[$i]->nombre;
+                    $row[] = $aProductos[$i]->cantidad;
+                    $row[] = number_format ($aProductos[$i]->precio, 2, ", ", ".");
+                    $row[] = $aProductos[$i]->descripcion;
                     $row[] = "<img src='/files/".$aProductos[$i]->imagen."' class='img-thumbnail'>";
                     $cont++;
                     $data[] = $row;
@@ -72,7 +73,7 @@ class ControladorProducto extends Controller
         
                 $json_data = array(
                     "draw" => intval($request['draw']),
-                    "recordsTotal" => count($$aProductos), //cantidad total de registros sin paginar
+                    "recordsTotal" => count($aProductos), //cantidad total de registros sin paginar
                     "recordsFiltered" => count($aProductos), //cantidad total de registros en la paginacion
                     "data" => $data,
                 );
@@ -103,11 +104,11 @@ class ControladorProducto extends Controller
                         if ($_POST["id"] > 0) {
 
                     $productoAnt = new Producto();
-                    $productonAnt->obtenerPorId($entidad->idproducto);
+                    $productoAnt->obtenerPorId($entidad->idproducto);
                 
                     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
                     //Eliminar imagen anterior
-                    @unlink(env('APP_PATH') . "/public/files/$productoAux->imagen");                          
+                    @unlink(env('APP_PATH') . "/public/files/$productoAnt->imagen");                          
                      } else {
                     $entidad->imagen = $productoAnt->imagen;
                      }
@@ -157,6 +158,7 @@ class ControladorProducto extends Controller
                 } else {
                     return redirect('admin/login');
                 }
+            }
             
             public function eliminar(Request $request) 
             {
