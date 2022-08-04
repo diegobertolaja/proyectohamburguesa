@@ -17,7 +17,7 @@ class ControladorWebMiCuenta extends Controller
         $aSucursales = $sucursal-> obtenerTodos();  
         
         $cliente = New Cliente();
-        $cliente->obtenerPorId();    
+        $cliente->obtenerPorId(Session::get('idcliente'));    
            
         $pedido = New Pedido();
         
