@@ -21,6 +21,7 @@ class ControladorWebCambiarDatos extends Controller
     public function edtiar() {
         $cliente = new Cliente();
         $cliente->obtenerPorId(Session::get('idcliente'));
+        
         $pg = "cambiar-datos";
 
         $nombre = $request->input(txtNombre);
@@ -30,13 +31,22 @@ class ControladorWebCambiarDatos extends Controller
         $telefono = $request->input(txtTelefono);
         $clave = $request->input(txtClave);
 
+        $sucursal = New Sucursal();
+        $aSucursales = $sucursal-> obtenerTodos(); 
+     
         $cliente = new Cliente();
-        $cliente->obtenerPorMail($mail);
-        if($mail==$cliente->$mail);{
-        $msg['msg'] = "Este mail ya se encuntra registrado";
-        $msg['estado'] = "danger";
+        $cliente->nombre = $nombre;
+        $cliente-> apellido = $apellido;
+        $cliente-> mail = $mail;
+        $cliente-> dni = $dni;
+       $cliente-> telefono = $telefono;
+        $cliente->guardar();
 
-        }
-
-    }
+    return view("web.login", compact('pg', 'aSucursales'));
 }
+
+}
+
+
+
+
