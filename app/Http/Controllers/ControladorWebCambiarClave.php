@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
+use Illuminate\Http\Request;
 
 
 class ControladorWebCambiarClave extends Controller
@@ -13,4 +14,10 @@ class ControladorWebCambiarClave extends Controller
             $aSucursales = $sucursal-> obtenerTodos();
             return view("web.cambiar-clave", compact('pg', '$aSucursales'));
     }
+
+    public function guardar(Request $request) {
+        $clave = $request->input('txtClave');
+        $reClave = $request->input('txtReClave');
+
+        if($clave)
 }
