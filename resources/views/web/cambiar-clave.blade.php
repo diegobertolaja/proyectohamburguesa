@@ -13,12 +13,20 @@
         <div class="col-md-6">
           <div class="form_container">
             <form action="" method="POST">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                  @if(isset($msg))
+           <div class="alert alert-{{ $msg['estado'] }}" role="alert">
+                  {{ $msg["msg"] }}
+           </div>
+                  @endif
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"></input> 
             <div>
-              <input id="txtClave" name="txtClave" type="clave" class="form-control" placeholder="Clave"/>
+                <input id="txtClave" name="txtClave" type="text" class="form-control" placeholder="Nueva clave"/>
+              </div>
+              <div>
+                <input id="txtReClave" name="txtReClave" type="text" class="form-control" placeholder="Re-ingresar nueva clave"/>
               </div>
              <div class="btn_box">
-                  <button type="submit" id="btnEnviar" name="btnEnviar" href="">Enviar</button>
+                  <button type="submit" id="btnEnviar" name="btnEnviar" href="">Cambiar</button>
             </div>   
             </div>
             </form>
