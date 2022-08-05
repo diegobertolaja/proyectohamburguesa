@@ -93,17 +93,28 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
-    public function guardar() {
+    public function guardar() 
+    {
+        if($this->clave != "") {
         $sql = "UPDATE $this->table SET
             nombre='$this->nombre',
             apellido='$this->apellido'
-            mail=$this->mail,
+            mail='$this->mail',
             dni='$this->dni',
-            telefono='$this->telefono'
+            telefono='$this->telefono',
             clave='$this->clave'
             WHERE idcliente=?";
+        } else {
+            $sql = "UPDATE $this->table SET
+            nombre='$this->nombre',
+            apellido='$this->apellido'
+            mail='$this->mail',
+            dni='$this->dni',
+            telefono='$this->telefono'
+        }    
         $affected = DB::update($sql, [$this->idcliente]);
     }
+    
 
     public function obtenerPorId($idcliente)
     {
