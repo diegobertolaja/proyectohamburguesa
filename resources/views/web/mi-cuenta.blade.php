@@ -5,7 +5,12 @@
 <section class="book_section layout_padding">
     <div class="container offset-sm-3">
       <div class="heading_container">
-
+      rm action="" method="POST">
+                  @if(isset($msg))
+           <div class="alert alert-{{ $msg['estado'] }}" role="alert">
+                  {{ $msg["msg"] }}
+           </div>
+                  @endif
       <div class="card border-light mb-3 col-6">
             <div class="card-body">
                   <h2 class="card-tittle">{{ $cliente->nombre . " " . $cliente->apellido }}</h2>

@@ -20,19 +20,19 @@
                   @endif
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input> 
             <div>
-                <input id="txtNombre" name="txtNombre" type="text" class="form-control" placeholder="Nombre" value="{{ cliente->nombre }}"/>
+                <input id="txtNombre" name="txtNombre" type="text" class="form-control" placeholder="Nombre" value="{{ $cliente->nombre }}"/>
               </div>
               <div>
-                <input id="txtApellido" name="txtApellido" type="text" class="form-control" placeholder="Apellido" value="{{ cliente->apellido }}"/>
+                <input id="txtApellido" name="txtApellido" type="text" class="form-control" placeholder="Apellido" value="{{ $cliente->apellido }}"/>
               </div>
               <div>
-                <input id="txtDni" name="txtDni" type="text" class="form-control" placeholder="Dni" value="{{ cliente->dni }}"/>
+                <input id="txtDni" name="txtDni" type="text" class="form-control" placeholder="Dni" value="{{ $cliente->dni }}"/>
               </div>
               <div>
-                <input id="txtMail" name="txtMail" type="mail" class="form-control" placeholder="Mail" value="{{ cliente->mail }}"/>
+                <input id="txtMail" name="txtMail" type="mail" class="form-control" placeholder="Mail" value="{{ $cliente->mail }}"/>
               </div>  
               <div> 
-            <input id="txtTelefono" name="txtTelefono" type="clave" class="form-control" placeholder="Telefono" value="{{ cliente->telefono }}"/>
+            <input id="txtTelefono" name="txtTelefono" type="clave" class="form-control" placeholder="Telefono" value="{{ $cliente->telefono }}"/>
               </div>
              <div class="btn_box">
                   <button type="submit" id="btnEnviar" name="btnEnviar" href="">Enviar</button>

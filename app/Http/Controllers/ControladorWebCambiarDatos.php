@@ -39,10 +39,12 @@ class ControladorWebCambiarDatos extends Controller
         $cliente-> apellido = $apellido;
         $cliente-> mail = $mail;
         $cliente-> dni = $dni;
-       $cliente-> telefono = $telefono;
+        $cliente-> telefono = $telefono;
         $cliente->guardar();
+        $msg['estado'] = "success";
+        $msg['msg'] = "Cambiado corretamente";
 
-    return view("web.login", compact('pg', 'aSucursales'));
+    return view("web.login", compact('pg', 'aSucursales', 'cliente'));
 }
 
 }
