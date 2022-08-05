@@ -27,12 +27,13 @@ class ControladorWebCambiarClave extends Controller
         if($clave == $reClave){
             $cliente = new Cliente();
             $cliente->obtenerPorId(Session::get('idcliente'));
-            $cliente->clave = $clave;
+            $cliente->clave = password_hash($clave, PASSWORD_DEFAULT);
             $cliente->guardar();
             $msg['estado'] = "success";
             $msg['msg'] = "Clave cambiada exitosamente";
             return view("web.cambiar-clave", compact('pg', '$aSucursales', 'msg'));
        } else {
+        $msg['danger'] = "success";
         $msg = "Las claves no coinciden";
         return view("web.cambiar-clave", compact('pg', '$aSucursales', 'msg'));
 

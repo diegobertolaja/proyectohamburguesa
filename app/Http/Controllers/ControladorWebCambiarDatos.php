@@ -17,4 +17,26 @@ class ControladorWebCambiarDatos extends Controller
                 
     return view("web.cambiar-datos", compact('pg', 'aSucursales'));
 }
+
+    public function edtiar() {
+        $cliente = new Cliente();
+        $cliente->obtenerPorId(Session::get('idcliente'));
+        $pg = "cambiar-datos";
+
+        $nombre = $request->input(txtNombre);
+        $apellido = $request->input(txtApellido);
+        $mail = $request->input(txtMail);
+        $dni = $request->input(txtDni);
+        $telefono = $request->input(txtTelefono);
+        $clave = $request->input(txtClave);
+
+        $cliente = new Cliente();
+        $cliente->obtenerPorMail($mail);
+        if($mail==$cliente->$mail);{
+        $msg['msg'] = "Este mail ya se encuntra registrado";
+        $msg['estado'] = "danger";
+
+        }
+
+    }
 }
