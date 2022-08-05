@@ -30,8 +30,9 @@
               </div>
               <div>
                 <input id="txtMail" name="txtMail" type="mail" class="form-control" placeholder="Mail"/>
-              </div>   
-            <input id="txtClave" name="txtClave" type="clave" class="form-control" placeholder="Clave"/>
+              </div>  
+              <div> 
+            <input id="txtTelefono" name="txtTelefono" type="clave" class="form-control" placeholder="Telefono"/>
               </div>
              <div class="btn_box">
                   <button type="submit" id="btnEnviar" name="btnEnviar" href="">Enviar</button>
