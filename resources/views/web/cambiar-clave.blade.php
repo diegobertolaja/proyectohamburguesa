@@ -5,7 +5,7 @@
 <section class="book_section layout_padding">
     <div class="container offset-sm-3">
       <div class="heading_container">
-        <h2 class="pb-4">
+        <h2 class="pb-4 text-white">
           Cambiar clave
         </h2>
       </div>

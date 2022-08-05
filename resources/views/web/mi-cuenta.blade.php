@@ -17,6 +17,8 @@
       <div class="form_container">
         <div class="btn_box">
             <a href="/cambiar-datos">Cambiar datos</a>
+            <div class="btn_box">
+            <a href="/cambiar-clave">Cambiar clave</a>
 
         </div>
         </div>
