@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
 use Illuminate\Http\Request;
+Use Session;
 
 
 class ControladorWebCambiarClave extends Controller
@@ -19,5 +20,11 @@ class ControladorWebCambiarClave extends Controller
         $clave = $request->input('txtClave');
         $reClave = $request->input('txtReClave');
 
-        if($clave)
+        if($clave == $reClave){
+            $cliente = new Cliente();
+            $cliente->obtenerPorId(Session::get('idcliente'));
+
+
+        }
+}
 }
