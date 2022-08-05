@@ -114,7 +114,7 @@ class Cliente extends Model
         }    
         $affected = DB::update($sql, [$this->idcliente]);
     }
-    
+   
 
     public function obtenerPorId($idcliente)
     {
@@ -169,7 +169,5 @@ class Cliente extends Model
             }
             return null;
         }
-
-
-}
-
+    }
+       
