@@ -101,8 +101,9 @@ class Carrito_producto extends Model
        INNER JOIN productos C ON C.idproducto = A.fk_idproducto
        WHERE B.fk_idcliente = $idcliente";
        $lstRetorno = DB::select($sql);
-
-       if(count($lstRetorno) > 0) {
+      
+      $aResultado = array(); 
+      if(count($lstRetorno) > 0) {
       $carrito_producto = New Carrito_producto();      
       $carrito_producto->idcarrito_producto = $lstRetorno[0]->idcarrito_producto;
       $carrito_producto->fk_idproducto = $lstRetorno[0]->fk_idproducto;
@@ -110,7 +111,8 @@ class Carrito_producto extends Model
       $carrito_producto->cantidad = $lstRetorno[0]->cantidad;
       $carrito_producto->producto = $lstRetorno[0]->producto;
       $carrito_producto->precio = $lstRetorno[0]->precio;
-      return $this;
+      $aResultado[] = $carrito_producto;
+      return $aResultado;
       }
 
       return Null;

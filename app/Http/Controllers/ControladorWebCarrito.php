@@ -7,6 +7,7 @@ use App\Entidades\Sucursal;
 use App\Entidades\Carrito;
 use App\Entidades\Carrito_producto;
 use Session;
+require app_path() . '/start/constants.php';
 
 class ControladorWebCarrito extends Controller
 {
@@ -32,6 +33,8 @@ class ControladorWebCarrito extends Controller
             $pg = "carrito";
             return view("web.carrito", compact('pg', 'carrito', 'carrito_producto', 'aSucursales'));
       }  
+}
+    }
       
       public function finalizarPedido(Request $request){
             $pedido = New Pedido();
@@ -42,7 +45,7 @@ class ControladorWebCarrito extends Controller
             
             foreach($aCarritosProductos as $carrito){
             $pedido->descripcion .= $carrito->producto . " ";
-            $pedido->total = $carrito->cantidad * $carrito * $precio;
+            $pedido->total = $carrito->cantidad * $carrito->$precio;
       }
             $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
