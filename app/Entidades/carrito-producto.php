@@ -8,7 +8,8 @@ use illuminate\Database\Eloquent\Model;
 class Carrito_producto extends Model
 {
     protected $table = 'carritos_productos';
-    public $timestamps = false;
+    public $timestamps = false; 
+    private $producto;
 
     protected $fillable = [
         'idcarrito_producto', 
@@ -89,18 +90,25 @@ class Carrito_producto extends Model
 
     public function obtenerPorCliente($idcliente){
       $sql = "SELECT
-              idcarrito_producto,
-              fk_idproducto,
-              fk_carrito,
-              cantidad
+              A.idcarrito_producto,
+              A.fk_idproducto,
+              A.fk_carrito,
+              A.cantidad,
+              C.nombre AS producto
+              C.precio
        FROM carritos_productos A
-       INNER JOIN carritos ON carritos_productos.fk_idcarrito = carritos.idcarrito
-       WHERE carritos.fk_idcliente = $idcliente";
+       INNER JOIN carritos B ON A.fk_idcarrito = B.idcarrito
+       INNER JOIN productos C ON C.idproducto = A.fk_idproducto
+       WHERE B.fk_idcliente = $idcliente";
        $lstRetorno = DB::select($sql);
 
        if(count($lstRetorno) > 0) {
-      $this->idcarrito = $lstRetorno[0]->idcarrito;
-      $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
+      $this->idcarrito_producto = $lstRetorno[0]->idcarrito_producto;
+      $this->fk_idproducto = $lstRetorno[0]->fk_idproducto;
+      $this->fk_carrito = $lstRetorno[0]->fk_carrito;
+      $this->cantidad = $lstRetorno[0]->cantidad;
+      $this->producto = $lstRetorno[0]->producto;
+      $this->precio = $lstRetorno[0]->precio;
       return $this;
       }
 
