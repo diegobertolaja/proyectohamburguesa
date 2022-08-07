@@ -1,7 +1,8 @@
 @extends('web.plantilla')
 @section ('contenido')
  
-  <section class="food_section layout_padding">
+  <section class="food_section layout_padding takeaway">
+  <form action="" method="POST">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -105,6 +106,8 @@
               </div>
             </div>
           </div>
+          </form>  
+          </section>
          
         
 @endsection

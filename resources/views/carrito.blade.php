@@ -2,6 +2,7 @@
 @section('contenido')
 
   <section class="food_section layout_padding-carrito">
+      <form action="" method="POST">
     <div class="container"> 
     <div class="heading_container heading_center">
               <h2>Mi carrito</h2>
@@ -44,27 +45,30 @@
             <h4>TOTAL: ${{$total}}</h4> 
             </div>
        <div class="col-12">
-                  <label for="">Sucursal donde retirar el pedido</label>
-                    <select name="lstSucursal" id="lstSucursal">  
+                  <label for="" class="d-block">Selecciona la sucursal donde retirar el pedido:</label>
+                    <select name="lstSucursal" id="lstSucursal" class="form-control">  
                   @foreach($aSucursales as $sucursal)
                   <option value="{{ $sucursal->idsucursal }}">{{ $sucursal->nombre }}</option>  
                   @endforeach
                   </select>  
             </div>
             <div class="col-12">
-                  <label for="">Selecciona el medio de pago</label>
-                  <select name="lstMedioDePago" id="lstMedioDePago">
+                  <label for="" class="d-block">Selecciona el medio de pago:</label>
+                  <select name="lstMedioDePago" id="lstMedioDePago" class="form-control>
                         <option value="mercadopago">Mercadopago</option>
                         <option value="pagoensucursal">Pago en sucursal</option>
              </select>
            </div>  
-           <div>
+           <div class="col-6">      
                <a href="/takeaway" class="lead">Agregar más productos</a> 
             </div>
-            <div>
-               <button type="submit" class="float-right btn btn-primary lead"></button>
+            <div class="col-6">
+               <button type="submit" class="float-right btn btn-primary lead">Finalizar mi pedido</button>
             </div>
 
              </div>  
-      </div>                    
+      </div> 
+      </form>                   
 </section>
+
+@endsection
