@@ -5,6 +5,7 @@ use App\Entidades\Producto;
 use App\Entidades\Categoria;
 use App\Entidades\Sucursal;
 use Illuminate\Http\Request;
+use Session;
 
 class ControladorWebTakeaway extends Controller
 {
@@ -23,4 +24,49 @@ class ControladorWebTakeaway extends Controller
         
         return view("web.takeaway", compact('pg', 'producto', '$aProductos', '$aCategorias', '$aSucursales'));
     }
+
+    public function agregarAlCarrito(Request $request)
+    {
+        $producto = New Producto();
+        $aProductos = $producto->obtenerTodos();
+        
+        $categoria = New Categoria();
+        $aCategorias = $categoria->obtenerTodos();
+
+        $sucursal = New Sucursal();
+        $aSucursales = $sucursal-> obtenerTodos();
+        
+        $pg = 'takeaway';
+
+        //asigna variables a los datos cargados en los input//
+        $cantidadProducto = $request->input("txtCantidadProducto");
+        $idProductoSelect = $request->input("txtIdProducto");
+        $idcliente = Session::get("idcliente");
+
+        if($idcliente > 0){
+          $carrito = New Carrito();
+          $carrito_producto = New Carrito_producto(); 
+          
+        //si tiene carrito//
+          if($carrito->obtenerPorCliente($idcliente) != Null)  {
+            $carrito_producto->fk_idcarrito = $carrito->idcarrito;
+
+        } else {
+        //si no tiene carrito crea un carrito para el cliente//    
+            $carrito_producto->fk_idproducto = $idProductoSelect;
+            $carrito_producto->cantidad = $cantidadProducto;
+            $carrito_producto->insertar;
+            
+            $msg["estado"] = "success";
+            $msg["mensaje"] = "Añadiste un producto al carrito";
+            return view("web.takeaway", compact('msg', 'pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));
+
+
+        }
+        }
+        
+        
+
+    }
+
 }
