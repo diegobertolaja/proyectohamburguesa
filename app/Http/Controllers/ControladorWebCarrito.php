@@ -51,5 +51,3 @@ class ControladorWebCarrito extends Controller
 
       }      
      
-    }
-}

@@ -7,7 +7,7 @@ use illuminate\Database\Eloquent\Model;
 
 class Carrito_producto extends Model
 {
-    protected $table = 'carrito_producto';
+    protected $table = 'carritos_productos';
     public $timestamps = false;
 
     protected $fillable = [
@@ -26,9 +26,9 @@ class Carrito_producto extends Model
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-        'fk_idproducto',
-        'fk_idcarrito',
-        'cantidad'
+        fk_idproducto,
+        fk_idcarrito,
+        cantidad
             ) VALUES (?, ?, ?);";
       $result = DB::insert($sql, [
             $this->fk_idproducto,
@@ -51,7 +51,7 @@ class Carrito_producto extends Model
 
   public function obtenerPorId($idcarrito_producto) {
       $sql = "SELECT
-              $idcarrito_producto;
+              $idcarrito_producto,
               fk_idproducto,
               fk_carrito,
               cantidad
@@ -80,7 +80,7 @@ class Carrito_producto extends Model
                   B.imagen AS imagenproducto,
                   A.fk_idcarrito,
                   A.cantidad
-                FROM carrito_producto A
+                FROM carritos_productos A
                 INNER JOIN productos B ON A.fk_idproducto = B.idproducto
                 WHERE A.fk_idcarrito = $idcarrito";
         $lstRetorno = DB::select($sql);
@@ -89,9 +89,13 @@ class Carrito_producto extends Model
 
     public function obtenerPorCliente($idcliente){
       $sql = "SELECT
-              idcarrito,
-              fk_idcliente
-       FROM carritos WHERE fk_idcliente = $idcliente";
+              idcarrito_producto,
+              fk_idproducto,
+              fk_carrito,
+              cantidad
+       FROM carritos_productos A
+       INNER JOIN carritos ON carritos_productos.fk_idcarrito = carritos.idcarrito
+       WHERE carritos.fk_idcliente = $idcliente";
        $lstRetorno = DB::select($sql);
 
        if(count($lstRetorno) > 0) {
@@ -101,4 +105,22 @@ class Carrito_producto extends Model
       }
 
       return Null;
+
+      public function obtenerTodos() {
+            $sql = "SELECT
+                    $idcarrito_producto;
+                    fk_idproducto,
+                    fk_carrito,
+                    cantidad
+            FROM $this->table ORDER BY idcarrito_producto";
+            $lstRetorno = DB::select($sql);
+            return $lstRetorno;
+
+      public function eliminar() {
+            $sql = "DELETE FROM $this->table WHERE idcarrito_producto=?";
+            $affected =DB::delete($sql, [$this->idcarrito_producto]);
+
+      }     
+      
+}
 }
