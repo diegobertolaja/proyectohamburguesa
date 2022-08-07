@@ -24,6 +24,35 @@
             <a href="/cambiar-datos">Cambiar datos</a>
             <div class="btn_box">
             <a href="/cambiar-clave">Cambiar clave</a>
+</div>
+        </div>
+        </div>
+        </div>
 
-        </div>
-        </div>
+        <div class="pt-5">
+            <div class="container">
+            <div class="heading_container">
+                  <div class="card border-light mb-3 col-12">
+                        <div class="card-body">
+                              <div>
+                                    <h2 class="text-center p-4">Pedidos</h2>
+                                    <table class="table table-striped table-hover border">
+                                          <thead>
+                                             <tr>
+                                                <th>Pedido</th>
+                                                <th>Fecha</th>
+                                                <th>Descripción</th>
+                                                <th>Total</th>
+                                                <th>Sucursal</th>
+                                                <th>Cliente</th>
+                                                <th>Estado</th>
+                                             </tr>
+                                          </thead>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+       </div>
+  </div>
+
