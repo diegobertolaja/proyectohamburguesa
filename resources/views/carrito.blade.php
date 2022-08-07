@@ -3,6 +3,7 @@
 
   <section class="food_section layout_padding-carrito">
       <form action="" method="POST">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>      
     <div class="container"> 
     <div class="heading_container heading_center">
               <h2>Mi carrito</h2>

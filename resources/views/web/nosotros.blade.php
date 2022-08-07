@@ -1,7 +1,9 @@
 @extends('web.plantilla')
 @section('contenido')
 
-  <section class="about_section layout_padding">
+  <section class="about_section layout_padding nosotros">
+  <form action="" method="POST">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>  
     <div class="container">
 
       <div class="row">
@@ -25,6 +27,7 @@
         </div>
       </div>
     </div>
+</form>
   </section>
 
   <!-- end about section -->
