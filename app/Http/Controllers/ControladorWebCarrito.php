@@ -41,12 +41,14 @@ class ControladorWebCarrito extends Controller
             $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
             
             foreach($aCarritosProductos as $carrito){
-            $pedido->descripcion .= $carrito->nombre . " ";
-            $pedido->total =
+            $pedido->descripcion .= $carrito->producto . " ";
+            $pedido->total = $carrito->cantidad * $carrito * $precio;
       }
             $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
+            $pedido->insertar();
+            return redirect("/mi-cuenta");
 
       }
 

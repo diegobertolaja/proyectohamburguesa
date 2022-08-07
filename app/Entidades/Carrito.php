@@ -56,6 +56,7 @@ class Carrito extends Model
 
       return null;
   }
+  
  
 
   public function obtenerTodos()
@@ -70,4 +71,4 @@ class Carrito extends Model
 
 }
 
- 
+  }
