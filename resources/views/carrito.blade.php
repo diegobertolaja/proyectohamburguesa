@@ -29,7 +29,7 @@
             @foreach($aCarrito_productos as $item)
             <?php $subtotal=$item->precioproducto * $item->cantidad; ?>
             <tr>
-                  <td><img src="/files/{{ $item->imagenproducto }}" alt="" width="100"</td>   
+                  <td><img src="/files/{{ $item->imagenproducto }}" alt="" width="100"></td>   
                   <td>{{ $item->nombreproducto }}</td>     
                   <td>${{ $item->number_format(precioproducto, 2, ",", ".") }}</td>  
                   <td>{{ $item->cantidad }}</td>  
