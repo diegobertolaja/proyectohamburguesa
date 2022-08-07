@@ -49,4 +49,23 @@
             <div>
                <button type="submit" class="float-right btn btn-primary lead"></button>
             </div>
-            </div>                    
+            <div class="col-12">
+                  <label for="">Sucursal donde retirar el pedido</label>
+                    <select name="lstSucursal" id="lstSucursal">  
+                  @foreach($aSucursales as $sucursal)
+                  <option value="{{ $sucursal->idsucursal }}">{{ $sucursal->nombre }}</option>  
+                  @endforeach
+                  </select>  
+            </div>
+            <div class="col-12">
+                  <label for="">Selecciona el medio de pago</label>
+                  <select name="lstMedioDePago" id="lstMedioDePago">
+                        <option value="mercadopago">Mercadopago</option>
+                        <option value="pagoensucursal">Pago en sucursal</option>
+                  </select>
+            </div>
+
+
+
+
+      </div>                    
