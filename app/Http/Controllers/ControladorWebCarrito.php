@@ -44,7 +44,7 @@ class ControladorWebCarrito extends Controller
             $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
             
             foreach($aCarritosProductos as $carrito){
-            $pedido->descripcion .= $carrito->producto . " ";
+            $pedido->descripcion .= $carrito->producto . " - ";
             $pedido->total = $carrito->cantidad * $carrito->$precio;
       }
             $pedido->fk_idsucursal = $request->input('lstSucursal');

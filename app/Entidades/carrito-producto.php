@@ -104,18 +104,20 @@ class Carrito_producto extends Model
       
       $aResultado = array(); 
       if(count($lstRetorno) > 0) {
+            foreach($lstRetorno as $resultado){
       $carrito_producto = New Carrito_producto();      
-      $carrito_producto->idcarrito_producto = $lstRetorno[0]->idcarrito_producto;
-      $carrito_producto->fk_idproducto = $lstRetorno[0]->fk_idproducto;
-      $carrito_producto->fk_carrito = $lstRetorno[0]->fk_carrito;
-      $carrito_producto->cantidad = $lstRetorno[0]->cantidad;
-      $carrito_producto->producto = $lstRetorno[0]->producto;
-      $carrito_producto->precio = $lstRetorno[0]->precio;
+      $carrito_producto->idcarrito_producto = $resultado->idcarrito_producto;
+      $carrito_producto->fk_idproducto = $resultado->fk_idproducto;
+      $carrito_producto->fk_carrito = $resultado->fk_carrito;
+      $carrito_producto->cantidad = $resultado->cantidad;
+      $carrito_producto->producto = $resultado->producto;
+      $carrito_producto->precio = $resultado->precio;
       $aResultado[] = $carrito_producto;
       return $aResultado;
-      }
+}
+}
 
-      return Null;
+   
 
       public function obtenerTodos() {
             $sql = "SELECT
