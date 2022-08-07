@@ -10,21 +10,17 @@ use Session;
 class ControladorWebMiCuenta extends Controller
 {
     public function index()
-    {
-        $pg = "mi-cuenta";
-            
+    {         
         $sucursal = New Sucursal();
         $aSucursales = $sucursal-> obtenerTodos();  
         
         $cliente = New Cliente();
-        $cliente->obtenerPorId(Session::get('idcliente'));    
-           
-        $pedido = New Pedido();
-        
-        return view("web.mi-cuenta", compact('pg', '$aSucursales', 'cliente'));
-    }
+        $cliente->obtenerPorId(Session::get('idcliente'));     
 
-    public function editar(Request $request){
-    return view("web.cambiar-datos");
+        $pedido = New Pedido();
+        $aPedidos->obtenerPorCliente;
+
+        return view("web.mi-cuenta", compact('$aSucursales', 'cliente'));
+    
 }
 }

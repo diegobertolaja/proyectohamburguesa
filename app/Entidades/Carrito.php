@@ -32,20 +32,18 @@ class Carrito extends Model
         return $this->idcarrito = DB::getPdo()->lastInsertId();
     }
 
-
     public function guardar() {
       $sql = "UPDATE $this->table SET
-          fk_idcliente='$this->fk_idclientee',
+          fk_idcliente=$this->fk_idcliente
           WHERE idcarrito=?";
       $affected = DB::update($sql, [$this->idcarrito]);
   }
 
-
-  public function obtenerPorId($idcarrito) {
+    public function obtenerPorId($idcarrito) {
       $sql = "SELECT
               idcarrito,
               fk_idcliente
-      FROM carritos WHERE idcliente = $idccarrito;
+      FROM $this->table WHERE idcarrito = $idccarrito";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
@@ -56,10 +54,8 @@ class Carrito extends Model
 
       return null;
   }
-  
- 
 
-  public function obtenerTodos()
+    public function obtenerTodos()
     {
         $sql = "SELECT
                   A.idcarrito,
@@ -69,6 +65,8 @@ class Carrito extends Model
         return $lstRetorno;
     }
 
-}
+    public function eliminar() {
+        
 
-  }
+    }
+

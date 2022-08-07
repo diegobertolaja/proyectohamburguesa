@@ -44,7 +44,8 @@ class Pedido extends Model
             2 => 'B.nombre',
             3 => 'C.nombre',
             4 => 'D.nombre',
-            4=> 'C.total',
+            4=> 'A.total'
+        );
            
         $sql = "SELECT DISTINCT
                     A.idpedido,
@@ -63,13 +64,15 @@ class Pedido extends Model
                     INNER JOIN estados D ON A.fk_idestado = B.idsucursal
 
                 WHERE 1=1
-                ");
+                ";
     
 
         //Realiza el filtrado
         if (!empty($request['search']['value'])) {
             $sql .= " AND ( A.fecha LIKE '%" . $request['search']['value'] . "%' ";
-            $sql .= " OR A.descripcion LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR B.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR C.nombre LIKE '%" . $request['search']['value'] . "%' ";
+            $sql .= " OR D.nombre LIKE '%" . $request['search']['value'] . "%' ";
             $sql .= " OR A.total LIKE '%" . $request['search']['value'] . "%' )";
             }
         $sql .= " ORDER BY " . $columns[$request['order'][0]['column']] . "   " . $request['order'][0]['dir'];
@@ -115,6 +118,7 @@ class Pedido extends Model
   public function obtenerPorId($idpedido)
   {
       $sql = "SELECT
+              idpedido,
               fecha,
               descripcion,
               total,
@@ -147,4 +151,8 @@ class Pedido extends Model
         return $lstRetorno;
     }
 
+    public function obtenerPorCliente($cliente){
+        
+
+    }
 }
