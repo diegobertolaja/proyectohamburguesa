@@ -43,13 +43,7 @@
       <div class="float-right lead">
             <h4>TOTAL: ${{$total}}</h4> 
             </div>
-            <div>
-               <a href="/takeaway" class="lead">Agregar más productos</a> 
-            </div>
-            <div>
-               <button type="submit" class="float-right btn btn-primary lead"></button>
-            </div>
-            <div class="col-12">
+       <div class="col-12">
                   <label for="">Sucursal donde retirar el pedido</label>
                     <select name="lstSucursal" id="lstSucursal">  
                   @foreach($aSucursales as $sucursal)
@@ -62,10 +56,15 @@
                   <select name="lstMedioDePago" id="lstMedioDePago">
                         <option value="mercadopago">Mercadopago</option>
                         <option value="pagoensucursal">Pago en sucursal</option>
-                  </select>
+             </select>
+           </div>  
+           <div>
+               <a href="/takeaway" class="lead">Agregar más productos</a> 
+            </div>
+            <div>
+               <button type="submit" class="float-right btn btn-primary lead"></button>
             </div>
 
-
-
-
+             </div>  
       </div>                    
+</section>
