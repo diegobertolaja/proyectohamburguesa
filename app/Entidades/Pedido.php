@@ -151,7 +151,28 @@ class Pedido extends Model
         return $lstRetorno;
     }
 
-    public function obtenerPorCliente($cliente){
+    public function obtenerPorCliente($idcliente){
+        $sql = "SELECT
+              A.idpedido,
+              A.fecha,
+              A.descripcion,
+              A.total,
+              A.fk_idsucursal,
+              B.nombre AS nombresucursal
+              A.fk_idcliente,
+              A.fk_idestado
+         FROM pedidos A
+         INNER JOIN sucursal B On A.fk_idsucursal = B.idsucursal
+          WHERE fk_idpedido = $idpedido";
+         $lstRetorno = DB::select($sql);
+        
+        if(count($lstRetorno) > 0) {      
+        $this->idpedido = $lstRetorno->idpedido;
+        $this->fk_idcliente = $lstRetorno->fk_idcliente;
+        return $this;
+        }
+        return null; 
+  }
         
 
     }

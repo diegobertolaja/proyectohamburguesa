@@ -58,15 +58,30 @@ class Carrito extends Model
     public function obtenerTodos()
     {
         $sql = "SELECT
-                  A.idcarrito,
-                  A.nombre
-                FROM carritos A ORDER BY A.nombre";
+                  idcarrito,
+                  fk_idcliente
+                FROM $this->table ORDER BY idcarrito";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
     }
 
     public function eliminar() {
-        
-
+        $sql = "DELETE FROM $this->table WHERE idcarrito=?";
+        $affected = DB::delete($sql, [$this->idcarrito]);
     }
 
+    public function obtenerPorCliente($idcliente){
+        $sql = "SELECT
+                idcarrito,
+                fk_idcliente
+         FROM carritos  WHERE fk_idcliente = $idcliente";
+         $lstRetorno = DB::select($sql);
+        
+        if(count($lstRetorno) > 0) {      
+        $this->idcarrito = $lstRetorno->idcarrito;
+        $this->fk_idcliente = $lstRetorno->fk_idcliente;
+        return $this;
+        }
+        return null; 
+  }
+?>
