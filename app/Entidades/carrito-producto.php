@@ -7,12 +7,15 @@ use illuminate\Database\Eloquent\Model;
 
 class Carrito_producto extends Model
 {
-    protected $table = 'carritos';
+    protected $table = 'carrito_producto';
     public $timestamps = false;
 
     protected $fillable = [
         'idcarrito_producto', 
-        'fk_idcliente' 
+        'fk_idproducto',
+        'fk_idcarrito',
+        'cantidad'
+
     ];
 
     protected $hidden = [
@@ -23,11 +26,14 @@ class Carrito_producto extends Model
     public function insertar()
     {
         $sql = "INSERT INTO $this->table (
-           fk_idcliente
-            ) VALUES (?);";
-
-        $result = DB::insert($sql, [
-            $this->fk_idcliente
+        'fk_idproducto',
+        'fk_idcarrito',
+        'cantidad'
+            ) VALUES (?, ?, ?);";
+      $result = DB::insert($sql, [
+            $this->fk_idproducto,
+            $this->fk_idcarrito,
+            $this->cantidad
         ]);
         return $this->idcarrito_producto = DB::getPdo()->lastInsertId();
     }
@@ -35,22 +41,28 @@ class Carrito_producto extends Model
 
     public function guardar() {
       $sql = "UPDATE $this->table SET
-          fk_idcliente='$this->fk_idcliente',
+          fk_idproducto=$this->fk_idproducto,
+          fk_carrito=$this->fk_idcarrito,
+          cantidad=$this->cantidad,
           WHERE idcarrito_producto=?";
       $affected = DB::update($sql, [$this->idcarrito_producto]);
   }
 
 
-  public function obtenerPorId($idcarrito) {
+  public function obtenerPorId($idcarrito_producto) {
       $sql = "SELECT
-              idcarrito,
-              fk_idcliente
-      FROM carritos WHERE idcliente = $idccarrito;
+              $idcarrito_producto;
+              fk_idproducto,
+              fk_carrito,
+              cantidad
+      FROM $this->table WHERE idcarrito_producto = $idcarrito_producto";
       $lstRetorno = DB::select($sql);
 
       if (count($lstRetorno) > 0) {
-          $this->idcarrito = $lstRetorno[0]->idcarrito;
-          $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
+          $this->idcarrito_producto = $lstRetorno[0]->idcarrito_producto;
+          $this->fk_idproducto = $lstRetorno[0]->fk_idproducto;
+          $this->fk_idcarrito = $lstRetorno[0]->fk_idcarrito;
+          $this->cantidad = $lstRetorno[0]->cantidad;
           return $this;
           }
 
@@ -58,12 +70,19 @@ class Carrito_producto extends Model
   }
  
 
-  public function obtenerTodos()
+  public function obtenerPorCarrito($idcarrito)
     {
         $sql = "SELECT
-                  A.idcarrito,
-                  A.nombre
-                FROM carritos A ORDER BY A.nombre";
+                  A.idcarrito_producto,
+                  A.fk_idproducto,
+                  B.nombre AS nombreproducto,
+                  B.precio AS precioproducto,
+                  B.imagen AS imagenproducto,
+                  A.fk_idcarrito,
+                  A.cantidad
+                FROM carrito_producto A
+                INNER JOIN productos B ON A.fk_idproducto = B.idproducto
+                WHERE A.fk_idcarrito = $idcarrito";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
     }
@@ -82,8 +101,4 @@ class Carrito_producto extends Model
       }
 
       return Null;
-}
-  }
-}
-  }
 }
