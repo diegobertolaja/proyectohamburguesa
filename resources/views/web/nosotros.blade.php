@@ -2,7 +2,7 @@
 @section('contenido')
 
   <section class="about_section layout_padding">
-    <div class="container  ">
+    <div class="container">
 
       <div class="row">
         <div class="col-md-6 ">
@@ -13,9 +13,7 @@
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h2>
-                Somos Hamburguejas 
-              </h2>
+              <h2>Somos Hamburguejas</h2>
             </div>
             <p>
               Variedad de hamburguesas a base plantas y legumbres, papas fritas y pizzas sin harinas ni sufrimiento animal

@@ -98,7 +98,7 @@ class Cliente extends Model
         if($this->clave != "") {
         $sql = "UPDATE $this->table SET
             nombre='$this->nombre',
-            apellido='$this->apellido'
+            apellido='$this->apellido',
             mail='$this->mail',
             dni='$this->dni',
             telefono='$this->telefono',
@@ -111,21 +111,22 @@ class Cliente extends Model
             mail='$this->mail',
             dni='$this->dni',
             telefono='$this->telefono'
-        }    
+      }    
         $affected = DB::update($sql, [$this->idcliente]);
+    }
     }
    
 
     public function obtenerPorId($idcliente)
     {
         $sql = "SELECT
-                idcliente,
-                nombre,
-                apellido,
-                mail,
-                dni,
-                telefono,
-                clave
+                idcliente;
+                nombre;
+                apellido;
+                mail;
+                dni;
+                telefono;
+                clave;
         FROM clientes WHERE idcliente = $idcliente";
         $lstRetorno = DB::select($sql);
 
@@ -141,12 +142,13 @@ class Cliente extends Model
         }
         return null;
     }
+}
 
     public function obtenerTodos()
     {
         $sql = "SELECT
                   A.idcliente,
-                  A.nombre
+                  A.nombre,
                 FROM clientes A ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
@@ -170,4 +172,5 @@ class Cliente extends Model
             return null;
         }
     }
+}
        
