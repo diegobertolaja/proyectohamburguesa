@@ -36,11 +36,16 @@ class ControladorWebCarrito extends Controller
       public function finalizarPedido(Request $request){
             $pedido = New Pedido();
             $pedido->fecha = Date("Y-m-d H:i:s");
+
+            $carrito_producto = New Carrito_producto();
+            $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
+            
             $pedido->descripcion =
             $pedido->total =
-            $pedido->fk_idsucursal =
+
+            $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
-            $pedido->fk_idestado =
+            $pedido->fk_idestado = PEDIDO_PENDIENTE;
 
       }
 
