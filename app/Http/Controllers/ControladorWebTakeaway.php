@@ -58,15 +58,15 @@ class ControladorWebTakeaway extends Controller
             $carrito_producto->insertar;
             
             $msg["estado"] = "success";
-            $msg["mensaje"] = "Añadiste un producto al carrito";
-            return view("web.takeaway", compact('msg', 'pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));
-
-
-        }
-        }
-        
-        
-
+            $msg["mensaje"] = "Añadiste un producto! <a href='/carrito'>Ver carrito></a>";
+            return view("web.takeaway", compact('msg', 'pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));  
+            
+            $msg["estado"] = "danger";
+            $msg["mensaje"] = "Antes de agregar un producto a tu carrito, debes loguearte.";
+            return view("web.takeaway", compact('msg', 'pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));   
     }
 
 }
+    }
+}
+
