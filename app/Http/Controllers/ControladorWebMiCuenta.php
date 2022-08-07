@@ -18,7 +18,7 @@ class ControladorWebMiCuenta extends Controller
         $cliente->obtenerPorId(Session::get('idcliente'));     
 
         $pedido = New Pedido();
-        $aPedidos->obtenerPorCliente;
+        $aPedidos->obtenerPorCliente(Session::get("$idcliente"));
 
         return view("web.mi-cuenta", compact('$aSucursales', 'cliente'));
     

@@ -158,22 +158,18 @@ class Pedido extends Model
               A.descripcion,
               A.total,
               A.fk_idsucursal,
-              B.nombre AS nombresucursal
+              B.nombre AS sucursal,
               A.fk_idcliente,
-              A.fk_idestado
+              A.fk_idestado,
+              C.nombre AS estado
          FROM pedidos A
-         INNER JOIN sucursal B On A.fk_idsucursal = B.idsucursal
-          WHERE fk_idpedido = $idpedido";
-         $lstRetorno = DB::select($sql);
-        
-        if(count($lstRetorno) > 0) {      
-        $this->idpedido = $lstRetorno->idpedido;
-        $this->fk_idcliente = $lstRetorno->fk_idcliente;
-        return $this;
-        }
-        return null; 
+         INNER JOIN sucursales B On A.fk_idsucursal = B.idsucursal
+         INNER JOIN estados C On A.fk_idestado = C.idestado
+         WHERE fk_idcliente = $idcliente";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
   }
+}
         
 
-    }
-}
+  
