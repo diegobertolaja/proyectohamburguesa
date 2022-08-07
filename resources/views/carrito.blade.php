@@ -7,9 +7,8 @@
               <h2>Mi carrito</h2>
             </div>
             @if(isset($msg))
-           <div class="alert alert-{{ $msg['estado'] }}" role="alert">
-                  {{ $msg["msg"] }}
-           </div>
+           <div class="alert alert-{{ $msg['estado'] }}" role="alert">{{ $msg['mensaje'] }}</div>
+                  {{ $msg["msg"] }}</div>
                   @endif
                   <div class="row">
         <div class="col-12 my-5 ">   
@@ -43,5 +42,11 @@
             </table>    
       <div class="float-right lead">
             <h4>TOTAL: ${{$total}}</h4> 
+            </div>
+            <div>
+               <a href="/takeaway" class="lead">Agregar más productos</a> 
+            </div>
+            <div>
+               <button type="submit" class="float-right btn btn-primary lead"></button>
             </div>
             </div>                    

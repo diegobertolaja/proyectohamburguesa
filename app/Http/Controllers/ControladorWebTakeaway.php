@@ -58,7 +58,7 @@ class ControladorWebTakeaway extends Controller
             $carrito_producto->insertar;
             
             $msg["estado"] = "success";
-            $msg["mensaje"] = "Añadiste un producto! <a href='/carrito'>Ver carrito></a>";
+            $msg["mensaje"] = "Añadiste un producto a tu carrito";
             return view("web.takeaway", compact('msg', 'pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));  
             
             $msg["estado"] = "danger";
