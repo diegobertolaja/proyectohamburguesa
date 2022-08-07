@@ -35,12 +35,12 @@ class ControladorWebCarrito extends Controller
       
       public function finalizarPedido(Request $request){
             $pedido = New Pedido();
-            $pedido->fecha,
-            $pedido->descripcion,
-            $pedido->total,
-            $pedido->fk_idsucursal,
-            $pedido->fk_idcliente,
-            $pedido->fk_idestado
+            $pedido->fecha = Date("Y-m-d H:i:s");
+            $pedido->descripcion =
+            $pedido->total =
+            $pedido->fk_idsucursal =
+            $pedido->fk_idcliente = Session::get("idcliente");
+            $pedido->fk_idestado =
 
       }
 
