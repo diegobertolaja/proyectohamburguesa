@@ -17,9 +17,7 @@
             <div class="heading_container">
               <h2>Somos Hamburguejas</h2>
             </div>
-            <p>
-              Variedad de hamburguesas a base plantas y legumbres, papas fritas y pizzas sin harinas ni sufrimiento animal
-            </p>
+            <p>Variedad de hamburguesas a base plantas y legumbres, papas fritas y pizzas sin harinas ni sufrimiento animal</p>
             <a href="">
               Lee más
             </a>

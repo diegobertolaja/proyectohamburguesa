@@ -33,8 +33,15 @@ class ControladorWebCarrito extends Controller
             return view("web.carrito", compact('pg', 'carrito', 'carrito_producto', 'aSucursales'));
       }  
       
-      public function finalizarPedido(){
-            
+      public function finalizarPedido(Request $request){
+            $pedido = New Pedido();
+            $pedido->fecha,
+            $pedido->descripcion,
+            $pedido->total,
+            $pedido->fk_idsucursal,
+            $pedido->fk_idcliente,
+            $pedido->fk_idestado
+
       }
 
       }      
