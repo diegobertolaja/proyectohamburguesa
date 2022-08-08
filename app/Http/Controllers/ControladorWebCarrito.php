@@ -53,21 +53,38 @@ class ControladorWebCarrito extends Controller
             $pedido = New Pedido();
             $pedido->fecha = Date("Y-m-d H:i:s");
             $medioDePago = $request->input('lstMedioDePago');
-            If($medioDePago == "sucursal"){
+
             $carrito_producto = New Carrito_producto();
             $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
-            
+      
             foreach($aCarritosProductos as $carrito){
             $pedido->descripcion .= $carrito->producto . " - ";
             $pedido->total = $carrito->cantidad * $carrito->$precio;
-      }
-   }
+}
+
             $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
+           
+            If($medioDePago == "sucursal"){  
+      
+          
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
          }  else {
             //Abona por MP//
+            SDK::setClientId(config("payment-methods.mercadopago.client"));
+            SDK::setClientSecret(config("payment-methods.mercadopago.secret"));
+            SDK::setAccessToken($access_token); // Es el token de la cuenta MP donde se deposita el dinero//
+
+            //Armado del producto 'item' //
+            
+            $item = New Item();
+            $item->id = "1234";
+            $item->tittle = "Hamburguejas SRL";
+            $item->category_id = "products";
+            $item->quantity = 1;
+            $item->unit_price = $pedido->total;
+            $item->currency_id = "ARS";
 
          }           
 
@@ -78,11 +95,10 @@ class ControladorWebCarrito extends Controller
             $carrito->eliminarPorCliente(Session::get("idcliente"))
             }
          }
-
         
             return redirect("/mi-cuenta");
       }
- 
+   
      
    ?>
 
