@@ -50,9 +50,9 @@
                                                 @foreach(a$Pedidos as $pedido)
                                                 <tr>
                                                       <td>{{$pedido->$idpedido}}</td>
-                                                      <td>{{$pedido->fecha}}</td>
+                                                      <td>{{date_format(date_create($pedido->fecha), "d/m/Y H:i")}}</td>
                                                       <td>{{$pedido->descripcion}}</td>
-                                                      <td>{{$pedido->total}}</td>
+                                                      <td>${{number_format($pedido->total, 2, "," , ".")}}</td>
                                                       <td>{{$pedido->sucursal}}</td>
                                                       <td>{{$pedido->estado}}</td>
                                                 
