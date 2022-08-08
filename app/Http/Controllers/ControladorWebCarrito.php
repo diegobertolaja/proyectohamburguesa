@@ -51,6 +51,15 @@ class ControladorWebCarrito extends Controller
             $pedido->fk_idcliente = Session::get("idcliente");
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
+
+            //Vaciar el carrito//
+            $carrito_producto->eliminarPorCliente(Session::get("idcliente")){
+            
+            $carrito = New Carrito();
+            $carrito->eliminarPorCliente(Session::get("idcliente"))
+            }
+
+
             return redirect("/mi-cuenta");
 
       }

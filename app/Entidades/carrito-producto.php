@@ -115,25 +115,29 @@ class Carrito_producto extends Model
       $aResultado[] = $carrito_producto;
       return $aResultado;
 }
-}
-
-   
 
       public function obtenerTodos() {
             $sql = "SELECT
                     $idcarrito_producto;
                     fk_idproducto,
-                    fk_carrito,
+                    fk_idcarrito,
                     cantidad
             FROM $this->table ORDER BY idcarrito_producto";
             $lstRetorno = DB::select($sql);
             return $lstRetorno;
+      }
 
       public function eliminar() {
             $sql = "DELETE FROM $this->table WHERE idcarrito_producto=?";
             $affected =DB::delete($sql, [$this->idcarrito_producto]);
-
       }     
+
+      public function eliminarPorCliente($idcliente) {
+        $sql = "DELETE FROM  carritos_productos A
+        INNER JOIN carrito B ON A.fk_idcarrito = B.idcarrito
+        WHERE B.fk_idcliente =?";
+        $affected =DB::delete($sql, [$idcliente]);
       
 }
 }
+    }

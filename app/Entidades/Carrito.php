@@ -84,4 +84,15 @@ class Carrito extends Model
         }
         return null; 
   }
+
+    public function eliminar() {
+    $sql = "DELETE FROM $this->table WHERE idcarrito=?";
+    $affected =DB::delete($sql, [$this->idcarrito]);
+}     
+
+    public function eliminarPorCliente($idcliente) {
+    $sql = "DELETE FROM $this->table WHERE idcliente=?";
+    $affected =DB::delete($sql, [$idcliente]);
+
+}
 ?>
