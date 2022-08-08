@@ -8,6 +8,14 @@ use App\Entidades\Carrito;
 use App\Entidades\Pedido;
 use App\Entidades\Carrito_producto;
 use Session;
+
+use MercadoPago\Item;
+use MercadoPago\MerchantOrder;
+use MercadoPago\Payer;
+use MercadoPago\Payment;
+use MercadoPago\Preference;
+use MercadoPago\SDK;
+
 require app_path() . '/start/constants.php';
 
 class ControladorWebCarrito extends Controller
@@ -44,7 +52,8 @@ class ControladorWebCarrito extends Controller
       public function finalizarPedido(Request $request){
             $pedido = New Pedido();
             $pedido->fecha = Date("Y-m-d H:i:s");
-
+            $medioDePago = $request->input('lstMedioDePago');
+            If($medioDePago == "sucursal"){
             $carrito_producto = New Carrito_producto();
             $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
             
@@ -52,10 +61,15 @@ class ControladorWebCarrito extends Controller
             $pedido->descripcion .= $carrito->producto . " - ";
             $pedido->total = $carrito->cantidad * $carrito->$precio;
       }
+   }
             $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
+         }  else {
+            //Abona por MP//
+
+         }           
 
             //Vaciar el carrito//
             $carrito_producto->eliminarPorCliente(Session::get("idcliente")){
@@ -63,11 +77,12 @@ class ControladorWebCarrito extends Controller
             $carrito = New Carrito();
             $carrito->eliminarPorCliente(Session::get("idcliente"))
             }
-
          }
+
+        
             return redirect("/mi-cuenta");
       }
-
+ 
      
    ?>
 
