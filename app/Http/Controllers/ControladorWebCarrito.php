@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Entidades\Cliente;
 use App\Entidades\Sucursal;
 use App\Entidades\Carrito;
+use App\Entidades\Pedido;
 use App\Entidades\Carrito_producto;
 use Session;
 require app_path() . '/start/constants.php';
@@ -22,8 +23,12 @@ class ControladorWebCarrito extends Controller
          $carrito_producto = New Carrito_producto();
          if($carrito_producto->obtenerPorCarrito($carrito->idcarrito) != Null) {
             $idcarrito = $carrito->idcarrito;
-            $aCarrito_producto = $carrito_producto->obtenerPorCarrito();
+            $aCarritos_productos = $carrito_producto->obtenerPorCarrito();
          } else {
+               $aCarritos_roductos = array(),
+         
+         } else {      
+
             $msg ['estado'] = "info";
             $msg ['mensaje'] = "Su carrito está vacío. Agregue productos.";
          }
@@ -59,10 +64,12 @@ class ControladorWebCarrito extends Controller
             $carrito->eliminarPorCliente(Session::get("idcliente"))
             }
 
-
+         }
             return redirect("/mi-cuenta");
-
       }
 
-      }      
+     
+   ?>
+
+   
      

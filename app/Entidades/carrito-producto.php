@@ -133,8 +133,8 @@ class Carrito_producto extends Model
       }     
 
       public function eliminarPorCliente($idcliente) {
-        $sql = "DELETE FROM  carritos_productos A
-        INNER JOIN carrito B ON A.fk_idcarrito = B.idcarrito
+        $sql = "DELETE A.* FROM  carritos_productos A
+        INNER JOIN carritos B ON A.fk_idcarrito = B.idcarrito
         WHERE B.fk_idcliente =?";
         $affected =DB::delete($sql, [$idcliente]);
       
