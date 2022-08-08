@@ -44,9 +44,21 @@
                                                 <th>Descripción</th>
                                                 <th>Total</th>
                                                 <th>Sucursal</th>
-                                                <th>Cliente</th>
                                                 <th>Estado</th>
                                              </tr>
+                                             <tbody>
+                                                @foreach(a$Pedidos as $pedido)
+                                                <tr>
+                                                      <td>{{$pedido->$idpedido}}</td>
+                                                      <td>{{$pedido->fecha}}</td>
+                                                      <td>{{$pedido->descripcion}}</td>
+                                                      <td>{{$pedido->total}}</td>
+                                                      <td>{{$pedido->sucursal}}</td>
+                                                      <td>{{$pedido->estado}}</td>
+                                                
+                                                </tr>
+                                                @endforeach
+                                             </tbody>
                                           </thead>
                                     </table>
                               </div>

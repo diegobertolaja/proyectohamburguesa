@@ -28,17 +28,22 @@ class ControladorWebLogin extends Controller
       $cliente = New Cliente();
       $cliente->obtenerPorMail($mail);
 
-        if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave));
+      $pedido = New Pedido();
+      $aPedidos = $pedido->obtenerPorCliente(Session::get("idcliente"));
+
+      if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave));
 
         $cliente->obtenerPorId($cliente->idcliente);
         Session::put("idcliente", $cliente->idcliente);
-        return view ("/web.mi-cuenta", compact('cliente', '$aSucursales'));
+        return view ("web.mi-cuenta", compact('cliente', '$aSucursales', 'aPedidos'));
 
     } else {
         $msg["msg"]= "Correo o clave incorrecto";
         $msg["estado"]= "danger";
         return view ("/web.login", compact('msg', '$aSucursales', 'pg'));    
     }
+
+  
  
 
 

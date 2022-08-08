@@ -18,9 +18,18 @@ class ControladorWebMiCuenta extends Controller
         $cliente->obtenerPorId(Session::get('idcliente'));     
 
         $pedido = New Pedido();
-        $aPedidos->obtenerPorCliente(Session::get("$idcliente"));
+        $aPedidos = $pedido->obtenerPorCliente(Session::get("idcliente"));
 
-        return view("web.mi-cuenta", compact('$aSucursales', 'cliente'));
+        return view("web.mi-cuenta", compact('$aSucursales', 'cliente', 'aPedidos'));
     
 }
+
+    public function ingresar (Request $request) {
+        $pg = "login";
+        $sucursal = New Sucursal();
+        $aSucursales = $sucursal-> obtenerTodos();  
+         return view("web.mi-cuenta", compact('$aSucursales', 'cliente', 'aPedidos'));
+    }
 }
+
+
