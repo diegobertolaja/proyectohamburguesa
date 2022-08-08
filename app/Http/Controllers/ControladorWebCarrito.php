@@ -25,7 +25,7 @@ class ControladorWebCarrito extends Controller
             $idcarrito = $carrito->idcarrito;
             $aCarritos_productos = $carrito_producto->obtenerPorCarrito();
          } else {
-               $aCarritos_roductos = array(),
+               $aCarritos_productos = array(),
          
          } else {      
 
