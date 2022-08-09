@@ -141,3 +141,5 @@ class Carrito_producto extends Model
 }
 }
     }
+
+    ?>

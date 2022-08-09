@@ -191,6 +191,8 @@ class Pedido extends Model
                 $affected = DB::update($sql, [$idCliente]);
         }   
 }
+
+?>
    
 
   

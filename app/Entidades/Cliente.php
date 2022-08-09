@@ -33,6 +33,7 @@ class Cliente extends Model
         $this->Telefono = $request->input('txtTelefono');
         $this->clave = password_hash ($request->input('txtClave'), PASSWORD_DEFAULT);
     }
+}
 
     public function insertar()
     {
@@ -111,11 +112,10 @@ class Cliente extends Model
             mail='$this->mail',
             dni='$this->dni',
             telefono='$this->telefono'
-      }    
+        }
         $affected = DB::update($sql, [$this->idcliente]);
-    }
-    }
-
+} 
+}
     public function obtenerPorId($idcliente)
     {
         $sql = "SELECT
@@ -141,7 +141,6 @@ class Cliente extends Model
         }
         return null;
     }
-}
 
     public function obtenerTodos()
     {
@@ -171,3 +170,4 @@ class Cliente extends Model
             return null;
         }
     }
+?>

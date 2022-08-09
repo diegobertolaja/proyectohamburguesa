@@ -132,3 +132,5 @@ class Sucursal extends Model
         return $lstRetorno;
     }
 }
+
+?>

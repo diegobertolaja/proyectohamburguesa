@@ -70,10 +70,6 @@ class Estado extends Model
                 FROM estados A ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;
-    }
-
-    
-
 
     public function guardar() {
       $sql = "UPDATE $this->table SET
@@ -100,4 +96,4 @@ class Estado extends Model
 }
 
 
-
+?> 
