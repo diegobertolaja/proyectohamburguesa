@@ -39,6 +39,9 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::post('/carrito', 'ControladorWebCarritot@finalizarPedido');
     Route::get('/cambiar-datos', 'ControladorWebCambiarDatos@index');
     Route::post('/cambiar-datos', 'ControladorWebCambiarDatos@editar');
+    Route::get('/mercado-pago/aprobado/{idCliente]', 'ControladorWebMercadopago@aprobar');
+    Route::get('/mercado-pago/pendiente/{idCliente]', 'ControladorWebMercadopago@pendiente');
+    Route::get('/mercado-pago/error/{idCliente]', 'ControladorWebMercadopago@error');
 
  
 

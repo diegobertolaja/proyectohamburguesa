@@ -35,5 +35,6 @@ if (!defined('USUARIOINCORRECTO')) define("USUARIOINCORRECTO", "El usuario no es
 
 //Web Carrito
 if (!defined('PEDIDO_PENDIENTE')) define("PEDIDO_PENDIENTE", 2);
+if (!defined('PEDIDO_PENDIENTEDEPAGO')) define("PEDIDO_PENDIENTEDEPAGO", 5);
 if (!defined('OKPEDIDO')) define("OKPEDIDO", "¡Pedido enviado!");
 ?>

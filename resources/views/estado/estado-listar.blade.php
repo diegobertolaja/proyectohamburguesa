@@ -30,6 +30,7 @@ if (isset($msg)) {
             <th></th>
             <th>En preparación</th>
             <th>Pendiente</th>
+            <th>Pendiente de pago</th>
             <th>Entregado</th>
             <th>Cancelado</th>
             </tr>

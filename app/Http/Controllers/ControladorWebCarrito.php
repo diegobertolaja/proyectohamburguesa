@@ -65,13 +65,16 @@ class ControladorWebCarrito extends Controller
             $pedido->fk_idsucursal = $request->input('lstSucursal');
             $pedido->fk_idcliente = Session::get("idcliente");
            
-            If($medioDePago == "sucursal"){  
-      
-          
+            If($medioDePago == "sucursal"){ 
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
-            $pedido->insertar();
+            $pedido->insertar(); 
+
          }  else {
+            $pedido->fk_idestado = PEDIDO_PENDIENTEDEPAGO;
+            $pedido->insertar();
+        
             //Abona por MP//
+            $access_token = "";
             SDK::setClientId(config("payment-methods.mercadopago.client"));
             SDK::setClientSecret(config("payment-methods.mercadopago.secret"));
             SDK::setAccessToken($access_token); // Es el token de la cuenta MP donde se deposita el dinero//
@@ -104,9 +107,9 @@ class ControladorWebCarrito extends Controller
 
             //url de configuracion para indicarle a MP
             $preference->back_urls = [
-               "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $pedido-idpedido, 
-               "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $pedido-idpedido, 
-               "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $pedido-idpedido, 
+               "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $cliente->idcliente, 
+               "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $cliente->idcliente, 
+               "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $cliente->idcliente, 
             ];
 
             $preference->payment_methods = array("installments" => 6);
