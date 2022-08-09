@@ -43,6 +43,8 @@ class ControladorWebLogin extends Controller
         $msg["estado"]= "danger";
         return view ("/web.login", compact('msg', '$aSucursales', 'pg'));    
     }
+
+    ?>
   
 
   

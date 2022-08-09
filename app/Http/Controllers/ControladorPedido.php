@@ -165,3 +165,4 @@ class ControladorPedido extends Controller
             }
       }
     
+      ?>

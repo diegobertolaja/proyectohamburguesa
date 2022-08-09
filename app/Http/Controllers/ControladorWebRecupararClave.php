@@ -15,3 +15,5 @@ class ControladorWebRecuperarClave extends Controller
             return view("web.recuperar-clave", compact('pg', '$aSucursales'));
     }
 }
+
+?>

@@ -161,4 +161,5 @@ class ControladorCategoria extends Controller
             }
 
         }
-    
+
+?>

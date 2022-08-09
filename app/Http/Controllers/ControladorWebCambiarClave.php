@@ -40,3 +40,5 @@ class ControladorWebCambiarClave extends Controller
        }
 }
 }
+
+?>

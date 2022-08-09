@@ -39,3 +39,4 @@ class ControladorWebNuevoRegistro extends Controller
     }
 
     }
+    ?>

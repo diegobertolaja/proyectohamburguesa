@@ -48,3 +48,5 @@ class ControladorWebContacto extends Controller
     return redirect("/confirmacion-envio");  
 }
 }
+
+?>

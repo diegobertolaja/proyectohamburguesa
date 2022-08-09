@@ -14,3 +14,5 @@ class ControladorWebLogout extends Controller
       return redirect ("/");
     }
 }
+
+?>

@@ -132,8 +132,7 @@ class ControladorWebCarrito extends Controller
             return redirect("/mi-cuenta");
       }
    
-   
-     
+      
    ?>
 
    
