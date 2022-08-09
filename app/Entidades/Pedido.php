@@ -104,9 +104,9 @@ class Pedido extends Model
     }
 
     public function guardar() {
-      $sql = "UPDATE $this->table SET
-          fecha=$this->fecha,
-          descripcion=$this->descripcion,
+      $sql = "UPDATE pedidos SET
+          fecha='$this->fecha',
+          descripcion='$this->descripcion',
           total=$this->total,
           fk_idsucursal=$this->fk_idsucursal,
           fk_idcliente=$this->fk_idcliente,
@@ -162,14 +162,35 @@ class Pedido extends Model
               A.fk_idcliente,
               A.fk_idestado,
               C.nombre AS estado
-         FROM pedidos A
-         INNER JOIN sucursales B On A.fk_idsucursal = B.idsucursal
-         INNER JOIN estados C On A.fk_idestado = C.idestado
-         WHERE fk_idcliente = $idcliente AND A.fk_idestado <> 4";
-        $lstRetorno = DB::select($sql);
-        return $lstRetorno;
+              FROM pedidos A
+              INNER JOIN sucursales B On A.fk_idsucursal = B.idsucursal
+              INNER JOIN estados C On A.fk_idestado = C.idestado
+              WHERE fk_idcliente = $idcliente AND A.fk_idestado <> 4";
+              $lstRetorno = DB::select($sql);
+              return $lstRetorno;
   }
+
+    public function aprobar($idCliente) {
+    $sql = "UPDATE pedidos SET
+        fk_idestado=2
+        WHERE fk_idcliente=?";
+        $affected = DB::update($sql, [$idCliente]);
 }
-        
+
+    public function pendiente($idCliente) {
+    $sql = "UPDATE pedidos SET
+        fk_idestado=5
+        WHERE fk_idcliente=?";
+        $affected = DB::update($sql, [$idCliente]);
+
+    }
+        public function error($idCliente) {
+        $sql = "UPDATE pedidos SET
+                fk_idestado=6
+                WHERE fk_idcliente=?";
+                $affected = DB::update($sql, [$idCliente]);
+        }   
+}
+   
 
   
