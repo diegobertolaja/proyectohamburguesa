@@ -14,7 +14,7 @@ class ControladorWebLogin extends Controller
             $sucursal = New Sucursal();
             $aSucursales = $sucursal-> obtenerTodos();
 
-            return view("web.login", compact('pg', '$aSucursales'));
+            return view("web.login", compact('pg', 'aSucursales'));
   }
 }
   
@@ -36,13 +36,14 @@ class ControladorWebLogin extends Controller
 
         $cliente->obtenerPorId($cliente->idcliente);
         Session::put("idcliente", $cliente->idcliente);
-        return view ("web.mi-cuenta", compact('cliente', '$aSucursales', 'aPedidos'));
+        return view ("web.mi-cuenta", compact('cliente', 'aSucursales', 'aPedidos'));
 
     } else {
         $msg["msg"]= "Correo o clave incorrecto";
         $msg["estado"]= "danger";
-        return view ("/web.login", compact('msg', '$aSucursales', 'pg'));    
+        return view ("/web.login", compact('msg', 'aSucursales', 'pg'));    
     }
+  
 
     ?>
   

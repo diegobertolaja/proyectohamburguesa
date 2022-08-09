@@ -14,19 +14,19 @@
       <ul class="filters_menu">
         <li class="active" data-filter="*">Todos</li>
       @foreach($aCategorias as $item)
+      @foreach($aCategorias as $itemCategoria) 
         <li data-filter=".{{ $item->nombre }}"> {{ $item->nombre }} </li>
       @endforeach
-
       </ul>
 
    <div class="filter-content">
     <div class="row grid">
  
       @foreach($aProductos as $item)
-        @foreach($aCategorias as $itemCategoria)   
+          @foreach($aCategorias as $itemCategoria)   
           if($item->fk_idcategoria == $itemCategoria->idcategoria) 
           <div class="col-sm-6 col-lg-4 all {{ $itemCategoria->nombre }}">  
-      @endif      
+          @endforeach
             <div class="box">
               <div>
                 <div class="img-box">

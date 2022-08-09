@@ -22,7 +22,7 @@ class ControladorWebTakeaway extends Controller
 
         $pg = 'takeaway';
         
-        return view("web.takeaway", compact('pg', 'producto', '$aProductos', '$aCategorias', '$aSucursales'));
+        return view("web.takeaway", compact('pg', 'producto', 'aProductos', 'aCategorias', 'aSucursales'));
     }
 
     public function agregarAlCarrito(Request $request)

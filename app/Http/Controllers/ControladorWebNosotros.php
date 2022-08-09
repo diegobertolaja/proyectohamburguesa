@@ -13,7 +13,7 @@ class ControladorWebNosotros extends Controller
         $sucursal = New Sucursal();
         $aSucursales = $sucursal-> obtenerTodos();    
         
-        return view("web.nosotros", compact('pg', '$aSucursales'));
+        return view("web.nosotros", compact('aSucursales'));
     }
 
     public function enviar (Request $request) {

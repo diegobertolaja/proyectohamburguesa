@@ -12,6 +12,6 @@ class ControladorWebHome extends Controller
             $pg = "inicio";
             $sucursal = New Sucursal();
             $aSucursales = $sucursal-> obtenerTodos();
-            return view("web.inicio", compact('pg', '$aSucursales'));
+            return view("web.inicio", compact('pg', 'aSucursales'));
     }
 }
