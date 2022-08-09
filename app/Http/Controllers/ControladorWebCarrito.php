@@ -86,6 +86,22 @@ class ControladorWebCarrito extends Controller
             $item->unit_price = $pedido->total;
             $item->currency_id = "ARS";
 
+            $preference = New Preference();
+            $preference->items = array($item);
+
+            $payer = New Payer();
+            $cliente = New Cliente();
+            $cliente->obtenerPorId(Session::get("idcliente"));
+            $payer->name = $cliente->nombre;
+            $payer->surname = $cliente->apellido;
+            $payer->mail = $cliente->mail;
+            $payer->date_create = date("Y-m-d H:i:s");
+            $payer->identification = array(
+               "type" => "DNI",
+               "number" => $cliente->dni,
+            );
+            $preference->payer = $payer;
+
          }           
 
             //Vaciar el carrito//
