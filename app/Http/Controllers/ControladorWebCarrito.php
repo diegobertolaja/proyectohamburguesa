@@ -102,6 +102,20 @@ class ControladorWebCarrito extends Controller
             );
             $preference->payer = $payer;
 
+            //url de configuracion para indicarle a MP
+            $preference->back_urls = [
+               "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $pedido-idpedido, 
+               "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $pedido-idpedido, 
+               "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $pedido-idpedido, 
+            ];
+
+            $preference->payment_methods = array("installments" => 6);
+            $preference->auto_return = "all";
+            $preference->notification_url = '';
+            $preference->save(); //ejecuta la transaccion
+
+
+
          }           
 
             //Vaciar el carrito//
