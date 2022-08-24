@@ -14,9 +14,9 @@
       <ul class="filters_menu">
         <li class="active" data-filter="*">Todos</li>
       @foreach($aCategorias as $item)
-      @foreach($aCategorias as $itemCategoria) 
         <li data-filter=".{{ $item->nombre }}"> {{ $item->nombre }} </li>
       @endforeach
+
       </ul>
 
    <div class="filter-content">
@@ -106,6 +106,8 @@
                 </div>
               </div>
             </div>
+            @endforeach
+
           </div>
           </form>  
           </section>

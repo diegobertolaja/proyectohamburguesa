@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Entidades\Producto;
 use App\Entidades\Categoria;
+use App\Entidades\Carrito;
+use App\Entidades\Carrito_producto;
 use App\Entidades\Sucursal;
 use Illuminate\Http\Request;
 use Session;
@@ -46,9 +48,10 @@ class ControladorWebTakeaway extends Controller
         if($idcliente > 0){
           $carrito = New Carrito();
           $carrito_producto = New Carrito_producto(); 
+        
           
         //si tiene carrito//
-          if($carrito->obtenerPorCliente($idcliente) != Null)  {
+          if($carrito->obtenerPorCliente($idcliente) != NULL)  {
             $carrito_producto->fk_idcarrito = $carrito->idcarrito;
 
         } else {

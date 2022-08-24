@@ -110,7 +110,7 @@ class Cliente extends Model
             apellido='$this->apellido'
             mail='$this->mail',
             dni='$this->dni',
-            telefono='$this->telefono'
+            telefono='$this->telefono'";
         }
         
         $affected = DB::update($sql, [$this->idcliente]);
