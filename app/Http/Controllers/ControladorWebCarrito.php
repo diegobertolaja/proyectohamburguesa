@@ -27,15 +27,15 @@ class ControladorWebCarrito extends Controller
       if($idcliente > 0 ){
          $carrito = New Carrito();
          
-      if($carrito->obtenerPorCliente($idcliente) != Null){
+      if($carrito->obtenerPorCliente($idcliente) != NULL){
          $carrito_producto = New Carrito_producto();
-         if($carrito_producto->obtenerPorCarrito($carrito->idcarrito) != Null) {
+         if($carrito_producto->obtenerPorCarrito($carrito->idcarrito) != NULL) {
             $idcarrito = $carrito->idcarrito;
             $aCarritos_productos = $carrito_producto->obtenerPorCarrito();
          } else {
-               $aCarritos_productos = array(),
+               $aCarritos_productos = array();
          
-         } else {      
+         }} else {      
 
             $msg ['estado'] = "info";
             $msg ['mensaje'] = "Su carrito está vacío. Agregue productos.";
@@ -47,7 +47,7 @@ class ControladorWebCarrito extends Controller
             return view("web.carrito", compact('pg', 'carrito', 'carrito_producto', 'aSucursales'));
       }  
 }
-    }
+
       
       public function finalizarPedido(Request $request){
             $pedido = New Pedido();
@@ -57,9 +57,9 @@ class ControladorWebCarrito extends Controller
             $carrito_producto = New Carrito_producto();
             $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
       
-            foreach($aCarritosProductos as $carrito){
+            foreach($carrito_producto as $carrito){
             $pedido->descripcion .= $carrito->producto . " - ";
-            $pedido->total = $carrito->cantidad * $carrito->$precio;
+            $pedido->total = $carrito->cantidad * $carrito->precio;
 }
 
             $pedido->fk_idsucursal = $request->input('lstSucursal');
@@ -117,20 +117,19 @@ class ControladorWebCarrito extends Controller
             $preference->notification_url = '';
             $preference->save(); //ejecuta la transaccion
 
-
-
          }           
 
             //Vaciar el carrito//
-            $carrito_producto->eliminarPorCliente(Session::get("idcliente")){
+            $carrito_producto->eliminarPorCliente(Session::get("idcliente"));
             
             $carrito = New Carrito();
-            $carrito->eliminarPorCliente(Session::get("idcliente"))
-            }
-         }
+            $carrito->eliminarPorCliente(Session::get("idcliente"));
+            
+            
         
             return redirect("/mi-cuenta");
       }
+   }
    
       
    ?>

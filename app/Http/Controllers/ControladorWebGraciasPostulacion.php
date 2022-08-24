@@ -12,7 +12,7 @@ class ControladorWebGraciasPostulacion extends Controller
         $sucursal = New Sucursal();
         $aSucursales = $sucursal-> obtenerTodos();    
         
-        return view("web.gracias-postulacion", compact('pg', '$aSucursales'));
+        return view("web.gracias-postulacion", compact('aSucursales'));
     }
 
   

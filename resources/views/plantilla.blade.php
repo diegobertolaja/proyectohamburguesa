@@ -81,7 +81,7 @@
             <i class="fas fa-user-circle fa-fw"></i> {{ Session::get("usuario_nombre") }}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="/usuarios/{{ Session::get("usuario") }}">Cuenta de usuario</a>
+            <a class="dropdown-item" href="/usuarios/{{ Session::get('usuario') }}">Cuenta de usuario</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Cerrar sesi&oacute;n</a>
           </div>

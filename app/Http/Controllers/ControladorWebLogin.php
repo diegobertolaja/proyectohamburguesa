@@ -16,7 +16,6 @@ class ControladorWebLogin extends Controller
 
             return view("web.login", compact('pg', 'aSucursales'));
   }
-}
   
     public function ingresar (Request $request) {
       $sucursal = New Sucursal();
@@ -32,18 +31,19 @@ class ControladorWebLogin extends Controller
       $pedido = New Pedido();
       $aPedidos = $pedido->obtenerPorCliente(Session::get("idcliente"));
 
-      if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave));
+      if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave)) {
 
         $cliente->obtenerPorId($cliente->idcliente);
         Session::put("idcliente", $cliente->idcliente);
-        return view ("web.mi-cuenta", compact('cliente', 'aSucursales', 'aPedidos'));
+        return view ("web.mi-cuenta", compact('pg', 'cliente', 'aSucursales', 'aPedidos'));
 
     } else {
         $msg["msg"]= "Correo o clave incorrecto";
         $msg["estado"]= "danger";
         return view ("/web.login", compact('msg', 'aSucursales', 'pg'));    
     }
-  
+  }
+}
 
     ?>
   
