@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
+use App\Entidades\Cliente;
 use Illuminate\Http\Request;
 
 class ControladorWebNuevoRegistro extends Controller
@@ -12,7 +13,7 @@ class ControladorWebNuevoRegistro extends Controller
             
             $sucursal = New Sucursal();
             $aSucursales = $sucursal-> obtenerTodos();
-            return view("web.nuevo-registro", compact('pg', '$aSucursales'));
+            return view("web.nuevo-registro", compact('pg', 'aSucursales'));
     }
     
     public function enviar(Request $request) {

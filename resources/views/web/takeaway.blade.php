@@ -30,7 +30,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="/files/{{ $item->image }}" alt="">
+                <img src="/files/{{ $item->imagen }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -106,6 +106,7 @@
                 </div>
               </div>
             </div>
+           
             @endforeach
 
           </div>

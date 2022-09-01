@@ -31,7 +31,7 @@ class Cliente extends Model
         $this->mail = $request->input('txtMail');
         $this->dni = $request->input('txtDni');
         $this->Telefono = $request->input('txtTelefono');
-        $this->clave = password_hash ($request->input('txtClave'), PASSWORD_DEFAULT);
+        $this->clave = password_hash($request->input('txtClave'), PASSWORD_DEFAULT);
     }
 
     public function insertar()
@@ -151,14 +151,14 @@ class Cliente extends Model
         return $lstRetorno;
     }
 
-    public function obtenerPorCorreo($correo)
+    public function obtenerPorMail($mail)
     {
         $sql = "SELECT
                 idcliente,
                 mail,
                 clave
-        FROM clientes WHERE correo = ?";
-        $lstRetorno = DB::select($sql, ($correo));
+        FROM clientes WHERE mail = ?";
+        $lstRetorno = DB::select($sql, ($mail));
 
         if (count($lstRetorno) > 0) {
             $this->idcliente = $lstRetorno[0]->idcliente;

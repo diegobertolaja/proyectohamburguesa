@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
 use Illuminate\Http\Request;
-use Entidades\Cliente;
+use App\Entidades\Cliente;
+use App\Entidades\Pedido;
 use Session;
 class ControladorWebLogin extends Controller
 {
