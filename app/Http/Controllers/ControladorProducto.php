@@ -64,7 +64,7 @@ class ControladorProducto extends Controller
                     $row[] = "<a href='/admin/producto/".$aProductos[$i]->idproducto." class='btn btn-secondary'><i class='fas fa-pencil'></i></a>";
                     $row[] = $aProductos[$i]->nombre;
                     $row[] = $aProductos[$i]->cantidad;
-                    $row[] = number_format ($aProductos[$i]->precio, 2, ", ", ".");
+                    $row[] = number_format($aProductos[$i]->precio, 2, ", ", ".");
                     $row[] = $aProductos[$i]->descripcion;
                     $row[] = "<img src='/files/".$aProductos[$i]->imagen."' class='img-thumbnail'>";
                     $cont++;

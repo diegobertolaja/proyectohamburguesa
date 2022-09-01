@@ -27,6 +27,9 @@
                 <input id="txtMail" name="txtMail" type="email" class="form-control" placeholder="Mail"/>
               </div>
               <div>
+                <input id="txtTelefono" name="txtTelefono" type="telefono" class="form-control" placeholder="Telefono"/>
+              </div>
+              <div>
                 <input id="txtClave" name="txtClave" type="password" class="form-control" placeholder="Password"/>
               </div>
               <div class="btn_box">
