@@ -138,7 +138,11 @@ class Producto extends Model
     {
         $sql = "SELECT
                   A.idproducto,
-                  A.nombre
+                  A.nombre,
+                  A.imagen,
+                  A.descripcion,
+                  A.precio,
+                  A.fk_idcategoria 
                 FROM productos A ORDER BY A.nombre";
         $lstRetorno = DB::select($sql);
         return $lstRetorno;

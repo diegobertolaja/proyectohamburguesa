@@ -24,8 +24,9 @@
  
       @foreach($aProductos as $item)
           @foreach($aCategorias as $itemCategoria)   
-          if($item->fk_idcategoria == $itemCategoria->idcategoria) 
-          <div class="col-sm-6 col-lg-4 all {{ $itemCategoria->nombre }}">  
+            @if($item->fk_idcategoria == $itemCategoria->idcategoria) 
+              <div class="col-sm-6 col-lg-4 all {{ $itemCategoria->nombre }}"/>  
+              @endif
           @endforeach
             <div class="box">
               <div>
