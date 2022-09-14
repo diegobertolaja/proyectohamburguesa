@@ -47,27 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
-                    </h1>
-                    <p>
-                    Probá nuestras Pizzas sin tac
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Pedí ahora
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      
         </div>
         <div class="container">
           <ol class="carousel-indicators">

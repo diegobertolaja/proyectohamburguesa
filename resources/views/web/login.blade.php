@@ -11,22 +11,24 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="form_container">
+          <div class="form-container">
             <form action="" method="POST">
+              <div class="mb-3">
               @if(isset ($msg))
               <div class="alert alert-danger" role="alert">
                 {{$msg}}
               </div>
               @endif
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-              <div>
-                <input id="txtMail" name="txtMail" type="email" class="form-control" placeholder="Mail" />
+            </div>  
+            <div class="mb-3">
+              <input id="txtMail" name="txtMail" type="email" class="form-control" placeholder="Mail" />
               </div>
-              <div>
-                <input id="txtClave" name="txtClave" type="password" class="form-control" placeholder="Password"/>
+              <div class="mb-3">
+              <input id="txtClave" name="txtClave" type="password" class="form-control" placeholder="Clave"/>
               </div>
               <div class="btn_box">
-                  <button type="submit" id="btnIngresar" name="btnIngresar" href="/mi-cuenta">Ingresar</button>
+                  <button class="btn btn-primary" type="submit" id="btnIngresar" name="btnIngresar" href="/mi-cuenta">Ingresar</button>
             </div>   
             <div class="mt-4">
               <a href="/nuevo-registro">Registrarme</a>    
@@ -35,7 +37,7 @@
               <a href="/recuperar-clave">Recuperar clave</a>    
             </div> 
              </form>
-          </div>
+             </div>
         </div>
         <div class="col-md-6">
           <div class="map_container ">

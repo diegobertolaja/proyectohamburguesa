@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="form_container">
+          <div class="form-container">
             <form action="" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
             <div>
