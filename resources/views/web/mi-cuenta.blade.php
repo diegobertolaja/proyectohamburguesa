@@ -47,9 +47,9 @@
                                                 <th>Estado</th>
                                              </tr>
                                              <tbody>
-                                                @foreach(a$Pedidos as $pedido)
+                                                @foreach($aPedidos as $pedido)
                                                 <tr>
-                                                      <td>{{$pedido->$idpedido}}</td>
+                                                      <td>{{$pedido->idpedido}}</td>
                                                       <td>{{date_format(date_create($pedido->fecha), "d/m/Y H:i")}}</td>
                                                       <td>{{$pedido->descripcion}}</td>
                                                       <td>${{number_format($pedido->total, 2, "," , ".")}}</td>

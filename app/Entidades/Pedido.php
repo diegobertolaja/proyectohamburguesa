@@ -165,7 +165,7 @@ class Pedido extends Model
               FROM pedidos A
               INNER JOIN sucursales B On A.fk_idsucursal = B.idsucursal
               INNER JOIN estados C On A.fk_idestado = C.idestado
-              WHERE fk_idcliente = $idcliente AND A.fk_idestado <> 4";
+              WHERE A.fk_idcliente = $idcliente AND A.fk_idestado <> 4";
               $lstRetorno = DB::select($sql);
               return $lstRetorno;
   }

@@ -15,12 +15,13 @@ class ControladorWebLogin extends Controller
             $sucursal = New Sucursal();
             $aSucursales = $sucursal-> obtenerTodos();
 
-            return view("web.login", compact('pg', 'aSucursales'));
+            return view ("web.login", compact('pg', 'aSucursales'));
   }
   
     public function ingresar (Request $request) {
       $sucursal = New Sucursal();
       $aSucursales = $sucursal-> obtenerTodos();
+ 
 
       $pg = "login";
       $mail = $request->input('txtMail');
@@ -29,10 +30,13 @@ class ControladorWebLogin extends Controller
       $cliente = New Cliente();
       $cliente->obtenerPorMail($mail);
 
-      $pedido = New Pedido();
-      $aPedidos = $pedido->obtenerPorCliente(Session::get("idcliente"));
 
-      if($cliente->idcliente > 0 && passsword_verify($clave, $cliente->clave)) {
+      $pedido = New Pedido();
+      $aPedidos = $pedido->obtenerPorCliente($cliente->idcliente);
+
+    
+
+      if($cliente->idcliente > 0 && password_verify($clave, $cliente->clave)) {
 
         $cliente->obtenerPorId($cliente->idcliente);
         Session::put("idcliente", $cliente->idcliente);
